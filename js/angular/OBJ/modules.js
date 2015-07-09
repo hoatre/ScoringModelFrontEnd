@@ -1,4 +1,5 @@
 var module={
+	modelinfoid:'',
 	modulename:'',
 	parent:'',
 	parentname:'',

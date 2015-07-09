@@ -9,6 +9,17 @@ function factorlistangular($scope,$http,url)
 	})
 }
 
+//load form list modellist
+function modellistangular($scope,$http,url)
+{
+	//alert(url);
+	$http.get(url)
+		.success(function (data) {
+			//alert(data);
+			$scope.modelinfos = data;
+		})
+}
+
 function getfactordetailangular($scope,$http,url)
 {
 	//alert(url);

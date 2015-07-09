@@ -48,6 +48,11 @@ var url_factordelete = address_server+"/factordelete";
 var url_factorlistangular = address_server+"/factorlistangular";
 var url_factordetailangular = address_server+"/factordetailangular";
 
+//model
+var url_modellistangular = address_server+"/modellistangular";
+var url_modeldelete = address_server+"/modeldelete";
+var url_modeldetailangular = address_server+"/modeldetailangular";
+
 //services scala
 var url_grouplistangular_scala = address_server_scala+"/group/getall";
 var url_groupdelete_scala = address_server_scala+"/group/delete";
