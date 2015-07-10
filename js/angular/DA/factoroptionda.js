@@ -24,15 +24,28 @@ function factorChanged($scope,$http,url)
 {
 	$scope.factorChanged = function(index){
 		//alert("factorChanged: "+index);
-		$http.post(url, {factorid:index}).
-		  success(function(data, status, headers, config) {
-			//alert(data);
-			$scope.factoroptions = data;
-		  }).
-		  error(function(data, status, headers, config) {
-			// called asynchronously if an error occurs
-			// or server returns response with an error status.
-	  });
+		//alert("factorChanged: "+index);
+		if(index==""||index==" "||index==null)
+		{
+			//alert("factorChanged: "+index);
+			$http.get(url_factoroptionlistangular)
+				.success(function (data) {
+					//alert(data);
+					$scope.factoroptions = data;
+				})
+		}
+		else
+		{
+			$http.post(url, {factorid:index}).
+			  success(function(data, status, headers, config) {
+				//alert(data);
+				$scope.factoroptions = data;
+			  }).
+			  error(function(data, status, headers, config) {
+				// called asynchronously if an error occurs
+				// or server returns response with an error status.
+		    });
+		}
    }
 }
 
@@ -64,8 +77,11 @@ function factoroptiondelete($scope,$http,url)
 
 function actionfactoroptiondetailangular($scope,$http,url)
 {
-	//alert($scope.groups._id);
+	//alert($scope.groups._id
 	$scope.save = function(){
+		if(!$scope.formFartorOption.$valid) {
+			return;
+		}
 		$http.post(url, {factoroptions:$scope.factoroptions}).
 		  success(function(data, status, headers, config) {
 			window.location.assign("/factoroptions.html")

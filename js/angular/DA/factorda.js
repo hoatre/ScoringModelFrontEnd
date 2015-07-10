@@ -50,6 +50,9 @@ function actionfactordetailangular($scope,$http,url)
 {
 	//alert($scope.groups._id);
 	$scope.save = function(){
+		if(!$scope.formFartor.$valid) {
+			return;
+		}
 		$http.post(url, {factors:$scope.factordetail}).
 		  success(function(data, status, headers, config) {
 			window.location.assign("/factors.html")

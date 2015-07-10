@@ -46,6 +46,9 @@ function actionmodeldetailangular($scope,$http,url)
 {
     $scope.save = function(){
         //alert(url);
+        if(!$scope.formModel.$valid) {
+            return;
+        }
         $http.post(url, {modelinfos:$scope.modeldetail}).
             success(function(data, status, headers, config) {
                 window.location.assign("/model.html")

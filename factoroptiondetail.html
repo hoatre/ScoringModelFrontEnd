@@ -203,42 +203,43 @@
 						<div class="portlet">
 							<div class="portlet-heading dark">
 								<div class="portlet-title">
-									<h4>factoroption detail</h4>
+									<h4>Factoroption Detail</h4>
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div class="portlet-body">
-								<form class="form-horizontal" id="validate-form" ng-controller="factoroptionDetailController" ng-submit="save()">
+								<form class="form-horizontal" id="validate-form" name="formFartorOption" ng-controller="factoroptionDetailController" ng-submit="save()">
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Factor:</label>
 										<div class="col-sm-5">
 											<div class="clearfix">
-												<select id="cboFactor" name="cboFactor" ng-model="factoroptions.factoroption.factorid" ng-options="factor._id as factor.factor.name for factor in factors">
+												<select id="cboFactor" name="cboFactor" style="width:200px" ng-model="factoroptions.factoroption.factorid" ng-options="factor._id as factor.factor.name for factor in factors" required>
+													<option value="">Please select</option>
 												</select>
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label">Name:</label>
+										<label class="col-sm-3 control-label" for="name">Name:</label>
 										<div class="col-sm-5">
 											<div class="clearfix">
-												<input type="text" tabindex="1" ng-model="factoroptions.factoroption.name" required>
+												<input type="text" name="name" tabindex="1" style="width:200px" ng-model="factoroptions.factoroption.name" required>
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label" for="password">Description:</label>
+										<label class="col-sm-3 control-label" >Description:</label>
 										<div class="col-sm-3">
 											<div class="clearfix">
-												<input type="text" tabindex="1" ng-model="factoroptions.factoroption.description">
+												<input type="text" name="description" tabindex="1" style="width:200px" ng-model="factoroptions.factoroption.description">
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label" for="password2">Score:</label>
+										<label class="col-sm-3 control-label" for="score">Score:</label>
 										<div class="col-sm-3">
 											<div class="clearfix">
-												<input type="text" tabindex="1" ng-model="factoroptions.factoroption.score" required>
+												<input type="text" tabindex="1" name="score" style="width:200px" ng-model="factoroptions.factoroption.score" class="numberinput" required>
 											</div>
 										</div>
 									</div>
@@ -246,7 +247,7 @@
 										<label class="col-sm-3 control-label">Fatal:</label>
 										<div class="col-sm-4">
 											<div class="clearfix">
-												<input type="text" tabindex="1" ng-model="factoroptions.factoroption.fatal">
+												<input type="text" tabindex="1" name="fatal" style="width:200px" ng-model="factoroptions.factoroption.fatal">
 											</div>
 										</div>
 									</div>
@@ -333,6 +334,9 @@
 				name: {
 					required: true
 				},
+				score: {
+					required: true
+				},
 				phone: {
 					required: false,
 				},
@@ -417,6 +421,40 @@
 			}});
 					
 		});
+
+		$(document).ready(function () {
+			$(".numberinput").forceNumeric();
+		});
+
+
+		// forceNumeric() plug-in implementation
+		jQuery.fn.forceNumeric = function () {
+
+			return this.each(function () {
+				$(this).keydown(function (e) {
+					var key = e.which || e.keyCode;
+
+					if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+								// numbers
+							key >= 48 && key <= 57 ||
+								// Numeric keypad
+							key >= 96 && key <= 105 ||
+								// comma, period and minus, . on keypad
+							key == 190 || key == 188 || key == 109 || key == 110 ||
+								// Backspace and Tab and Enter
+							key == 8 || key == 9 || key == 13 ||
+								// Home and End
+							key == 35 || key == 36 ||
+								// left and right arrows
+							key == 37 || key == 39 ||
+								// Del and Ins
+							key == 46 || key == 45)
+						return true;
+
+					return false;
+				});
+			});
+		}
 	</script>
   </body>
 </html>

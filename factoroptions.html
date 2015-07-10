@@ -214,8 +214,10 @@
 									</div>
 									<div id="basic" class="panel-collapse collapse in" ng-controller="factoroptionController">
 										<div class="portlet-body no-padding">
-											factors <select id="cboFactor" name="cboFactor" ng-model="factoroptions.factoroption.factorid" ng-options="factor._id as factor.factor.name for factor in factors" ng-change="factorChanged(factoroptions.factoroption.factorid)">
+											Factors <select id="cboFactor" name="cboFactor" ng-model="factoroptionid" ng-options="factor._id as factor.factor.name for factor in factors" ng-change="factorChanged(factoroptionid)">
+													<option value=""> All</option>
 												</select>
+											<hr/>
 											<table class="table table-bordered table-hover tc-table">
 												<thead>
 													<tr>

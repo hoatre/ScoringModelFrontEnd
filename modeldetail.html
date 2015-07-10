@@ -208,29 +208,30 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="portlet-body">
-                            <form class="form-horizontal" id="validate-form" ng-controller="modelDetailController" ng-submit="save()">
+                            <form class="form-horizontal" id="validate-form" name="formModel" ng-controller="modelDetailController" ng-submit="save()">
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Name:</label>
                                     <div class="col-sm-5">
                                         <div class="clearfix">
-                                            <input type="text" tabindex="1" ng-model="modeldetail.modelinfo.name" required>
+                                            <input type="text" name="name" tabindex="1" style="width:200px" ng-model="modeldetail.modelinfo.name" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="password">Description:</label>
+                                    <label class="col-sm-3 control-label">Description:</label>
                                     <div class="col-sm-3">
                                         <div class="clearfix">
-                                            <input type="text" tabindex="1" ng-model="modeldetail.modelinfo.description">
+                                            <input type="text" name="description" style="width:200px" tabindex="1" ng-model="modeldetail.modelinfo.description">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Status:</label>
                                     <div class="col-sm-4">
-                                        <div class="clearfix">
-                                            <input type="text" tabindex="1" ng-model="modeldetail.modelinfo.status">
-                                        </div>
+                                        <select id="cboStatus" name="cboStatus" style="width:200px" ng-model="modeldetail.modelinfo.status" required>
+                                            <option value="DeActive">DeActive</option>
+                                            <option value="Active">Active</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-actions">
@@ -314,6 +315,9 @@
                     equalTo: "#password"
                 },
                 name: {
+                    required: true
+                },
+                cboStatus: {
                     required: true
                 },
                 phone: {

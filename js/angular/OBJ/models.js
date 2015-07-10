@@ -4,7 +4,7 @@
 var modelinfo={
     name:'',
     description:'',
-    status:1
+    status:'DeActive'
 };
 var modelinfos={
     _id:'',

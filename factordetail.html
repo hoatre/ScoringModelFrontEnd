@@ -210,7 +210,7 @@
 								<div class="clearfix"></div>
 							</div>
 							<div class="portlet-body">
-								<form class="form-horizontal" id="validate-form" ng-controller="factorDetailController" ng-submit="save()">
+								<form class="form-horizontal" id="validate-form" name="formFactor" ng-controller="factorDetailController" ng-submit="save()">
 									<!-- <div class="form-group">
 										<label class="col-sm-3 control-label">parentid:</label>
 										<div class="col-sm-5">
@@ -231,7 +231,8 @@
 										<label class="col-sm-3 control-label">Model:</label>
 										<div class="col-sm-5">
 											<div class="clearfix">
-												<select id="cboModel"   name="cboModel" ng-model="factordetail.factor.modelinfoid" ng-options="modelinfo._id as modelinfo.modelinfo.name for modelinfo in modelinfos">
+												<select id="cboModel" style="width:200px"  name="cboModel" ng-model="factordetail.factor.modelinfoid" ng-options="modelinfo._id as modelinfo.modelinfo.name for modelinfo in modelinfos">
+													<option value="">Please select</option>
 												</select>
 											</div>
 										</div>
@@ -240,7 +241,8 @@
 										<label class="col-sm-3 control-label">Factor:</label>
 										<div class="col-sm-5">
 											<div class="clearfix">
-												<select id="cboFactor" name="cboFactor" ng-model="factordetail.factor.parentid" ng-options="factor._id as factor.factor.name for factor in factors">
+												<select id="cboFactor" style="width:200px" name="cboFactor" ng-model="factordetail.factor.parentid" ng-options="factor._id as factor.factor.name for factor in factors">
+													<option value="">Please select</option>
 												</select>
 											</div>
 										</div>
@@ -249,23 +251,25 @@
 										<label class="col-sm-3 control-label">Name:</label>
 										<div class="col-sm-5">
 											<div class="clearfix">
-												<input type="text" tabindex="1" ng-model="factordetail.factor.name" required>
+												<input type="text" name="name" style="width:200px" tabindex="1" ng-model="factordetail.factor.name" required>
+												<span class="error" ng-show="formFartor.name.$error.required">Required</span>
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label" for="password">Description:</label>
+										<label class="col-sm-3 control-label" for="subscription">Description:</label>
 										<div class="col-sm-3">
 											<div class="clearfix">
-												<input type="text" tabindex="1" ng-model="factordetail.factor.description">
+												<input type="text" name="description" style="width:200px" tabindex="2" ng-model="factordetail.factor.description">
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label" for="password2">Weigth:</label>
+										<label class="col-sm-3 control-label">Weigth:</label>
 										<div class="col-sm-3">
 											<div class="clearfix">
-												<input type="text" tabindex="1" ng-model="factordetail.factor.weigth" required>
+												<input type="text" name="weigth" style="width:200px" tabindex="3" ng-model="factordetail.factor.weigth" required>
+												<span class="error" ng-show="formFartor.weigth.$error.required">Required</span>
 											</div>
 										</div>
 									</div>
@@ -350,6 +354,9 @@
 					equalTo: "#password"
 				},
 				name: {
+					required: true
+				},
+				weigth: {
 					required: true
 				},
 				phone: {
