@@ -202,7 +202,7 @@
 								<div class="portlet"><!-- /Portlet -->
 									<div class="portlet-heading dark">
 										<div class="portlet-title">
-											<button type="button" onclick="moduledetail()" class="btn btn-primary">add</button>
+											<button type="button" onclick="moduledetail()" class="btn btn-primary">Add</button>
 										</div>
 										<div class="portlet-widgets">
 											<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
@@ -217,10 +217,10 @@
 												<thead>
 													<tr>
 														<th class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></th>
-														<th>modulename</th>
+														<th>Name</th>
 														<!-- <th class="hidden-xs">parentname</th> -->
-														<th class="hidden-xs">link</th>
-														<th class="hidden-xs">displayforguess</th>
+														<th class="hidden-xs">Link</th>
+														<th class="hidden-xs">Display</th>
 														<th class="col-medium center">Action</th>
 													</tr>
 												</thead>
@@ -237,7 +237,7 @@
 															{{module.module.link}}
 														</td>
 														<td class="hidden-xs">
-															{{module.module.displayforguess == 1?'true':'false'}}
+															{{module.module.displayforguess == 1?'True':'False'}}
 														</td>
 														<td class="col-medium center">
 															<div class="btn-group btn-group-xs ">

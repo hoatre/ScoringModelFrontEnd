@@ -203,14 +203,14 @@
 						<div class="portlet">
 							<div class="portlet-heading dark">
 								<div class="portlet-title">
-									<h4>module detail</h4>
+									<h4>Module Detail</h4>
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div class="portlet-body">
 								<form class="form-horizontal" id="validate-form" ng-controller="moduleDetailController" ng-submit="save()">
 									<div class="form-group">
-										<label class="col-sm-3 control-label">parent:</label>
+										<label class="col-sm-3 control-label">Parent:</label>
 										<div class="col-sm-5">
 											<div class="clearfix">
 												<select id="cboGroup" name="cboGroup" ng-model="moduledetail.module.parent" ng-options="module._id as module.module.modulename for module in modules">
@@ -219,7 +219,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label">modulename:</label>
+										<label class="col-sm-3 control-label">Name:</label>
 										<div class="col-sm-5">
 											<div class="clearfix">
 												<input type="text" tabindex="1" ng-model="moduledetail.module.modulename" required>
@@ -227,7 +227,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label" for="password">link:</label>
+										<label class="col-sm-3 control-label" for="password">Link:</label>
 										<div class="col-sm-3">
 											<div class="clearfix">
 												<input type="text" tabindex="1" ng-model="moduledetail.module.link">
@@ -235,7 +235,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label" for="password2">displayforguess:</label>
+										<label class="col-sm-3 control-label" for="password2">Display For Guess:</label>
 										<div class="col-sm-3">
 											<div class="clearfix">
 												<input type="checkbox" tabindex="3" id="chkDisplayForGuess" name="chkDisplayForGuess" ng-model="moduledetail.module.displayforguess" ng-true-value="1" ng-false-value="0" value="0">
@@ -253,7 +253,7 @@
 									<div class="form-actions">
 										<div class="form-group">
 											<div class="col-sm-offset-3 col-sm-9">
-												<button type="submit" class="btn btn-primary">save</button>
+												<button type="submit" class="btn btn-primary">Save</button>
 											</div>
 										</div>
 									</div>		
