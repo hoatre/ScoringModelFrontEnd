@@ -4,6 +4,7 @@ var factor={
 	name:'',
 	description:'',
 	weigth:'',
+	status:''
 };
 var factors={
 		_id:'',

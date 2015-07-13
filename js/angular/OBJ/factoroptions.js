@@ -4,7 +4,8 @@ var factoroption={
 	description:'',
 	score:'',
 	fatal:'',
-	odinal:''
+	odinal:'',
+	status:''
 };
 var factoroptions={
 		_id:'',
