@@ -1,8 +1,13 @@
- var app;
+
+
+var app, deps;
+ var apptree;
+ deps = ['treeGrid'];
 
 (function () {
     app = angular.module("apptpbuser", []);
 })();
+
  app.config(['$httpProvider', function($httpProvider){
     console.log($httpProvider.defaults.headers.common);
     delete $httpProvider.defaults.headers.common["X-Requested-With"];
@@ -73,6 +78,30 @@ function geturlidhtml(url)
 	return "";
 }
 
+function geturlvaluehtml(url,parameter)
+{
+ var strarr;
+ strarr=url.split('?');
+ if(strarr.length>1)
+ {
+	 for(var i=0;i<strarr.length;i++)
+	 {
+		 var strarr1=strarr[i].split('=');
+		 if(strarr1.length>1)
+		 {
+			 for(var j=0;j<strarr1.length;j++)
+			 {
+				 if(strarr1[0]==parameter)
+				 {
+					 return strarr1[i];
+				 }
+			 }
+		 }
+
+	 }
+ }
+ return "";
+}
 //get menu top
 function rolemodulesangular($scope,$http,url)
 {
