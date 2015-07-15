@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="apptpbuser">
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Models</title>
+    <title>Blank - eKoders Responsive Admin Theme</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -14,21 +14,15 @@
     <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
 
     <!-- PAGE LEVEL PLUGINS STYLES -->
-    <link rel="stylesheet" href="assets/css/plugins/footable/footable.min.css">
     <!-- REQUIRE FOR SPEECH COMMANDS -->
     <link rel="stylesheet" type="text/css" href="assets/css/plugins/gritter/jquery.gritter.css" />
 
     <!-- Tc core CSS -->
     <link id="qstyle" rel="stylesheet" href="assets/css/themes/style.css">
+    <link id="qstyle1" rel="stylesheet" href="css/bootstrap-treenav.min.css">
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="assets/css/ie-fix.css" />
     <![endif]-->
-    <script src="http://localhost:8888/js/angular.js"></script>
-    <script src="http://localhost:8888/js/angular/tpbfnc.js"></script>
-    <script src="http://localhost:8888/js/angular/linkaddress.js"></script>
-    <script src="js/angular/obj/models.js"></script>
-    <script src="js/angular/da/modelda.js"></script>
-    <script src="js/angular/bll/modelcontroller.js"></script>
 
 
     <!-- Add custom CSS here -->
@@ -62,6 +56,7 @@
             <div class="nav-top">
                 <!-- BEGIN RIGHT SIDE DROPDOWN BUTTONS -->
                 <ul class="nav navbar-right">
+                    <!--Speech Icon-->
                     <li class="dropdown user-box">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img class="img-circle" src="assets/images/user.jpg" alt=""> <span class="user-info">Hani Massoud</span> <b class="caret"></b>
@@ -69,27 +64,7 @@
                         <ul class="dropdown-menu dropdown-user">
                             <li>
                                 <a href="profile.html">
-                                    <i class="fa fa-user"></i> My Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-envelope"></i> My Messages
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-tasks"></i> My Tasks
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-gear"></i> Settings
-                                </a>
-                            </li>
-                            <li>
-                                <a href="login.html">
-                                    <i class="fa fa-power-off"></i> Logout
+                                    <i class="fa fa-user"></i>My Profile
                                 </a>
                             </li>
                         </ul>
@@ -99,11 +74,10 @@
                 <!-- BEGIN TOP MENU -->
                 <div class="collapse navbar-collapse top-collapse">
                     <!-- .nav -->
-                    <!--<ul class="nav navbar-left navbar-nav">-->
-                    <!--<li><a href="list.html" class="active">List</a></li>-->
-                    <!--<li><a href="edit.html">Edit</a></li>-->
-                    <!--<li><a href="login.html">Login</a></li>-->
-                    <!--</ul>&lt;!&ndash; /.nav &ndash;&gt;-->
+                    <ul class="nav navbar-left navbar-nav">
+                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="front/index.html">FrontEnd <span class="badge badge-primary">New</span></a></li>
+                    </ul><!-- /.nav -->
                 </div>
                 <!-- END TOP MENU -->
             </div><!-- /.nav-top -->
@@ -124,7 +98,7 @@
                     <!-- END Navigation category -->
 
                     <li>
-                        <a href="modulelist.html" class="active">
+                        <a href="modulelist.html">
                             <i class="fa"></i> Modules
                         </a>
                         <a href="grouplist.html">
@@ -167,6 +141,8 @@
                         </a>
                     </li>
                 </ul><!-- /.side-nav -->
+
+
             </div><!-- /.navbar-collapse -->
         </nav><!-- /.navbar-side -->
         <!-- END SIDE NAVIGATION -->
@@ -183,83 +159,87 @@
                             <li>
                                 <a href="#">Home</a>
                             </li>
-                            <li class="active">Models</li>
+                            <li>Pages</li>
+                            <li class="active">Blank</li>
                         </ul>
                     </div>
                     <!-- END BREADCRUMB -->
 
                     <div class="page-header title">
                         <!-- PAGE TITLE ROW -->
-                        <h1>Models</h1>
+                        <h1>Blank Page <span class="sub-title">sub title</span></h1>
                     </div>
+
                 </div><!-- /.col-lg-12 -->
             </div><!-- /.row -->
             <!-- END PAGE HEADING ROW -->
             <div class="row">
                 <div class="col-lg-12">
-
+                    Model 1
+                    <input type="hidden" id="Model1" value="Model1">
                     <!-- START YOUR CONTENT HERE -->
-                    <div class="portlet"><!-- /Portlet -->
-                        <div class="portlet-heading dark">
-                            <div class="portlet-title">
-                                <button type="button" onclick="modeldetail()" class="btn btn-primary">Add</button>
-                            </div>
-                            <div class="portlet-widgets">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
-                                <span class="divider"></span>
-                                <a href="#" class="box-close"><i class="fa fa-times"></i></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div id="basic" class="panel-collapse collapse in" ng-controller="modellistController">
-                            <div class="portlet-body no-padding">
-                                <table class="table table-bordered table-hover tc-table">
-                                    <thead>
-                                    <tr>
-                                        <!--<th class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></th>-->
-                                        <th>Name</th>
-                                        <!-- <th class="hidden-xs">parentname</th> -->
-                                        <th class="hidden-xs">Description</th>
-                                        <th class="hidden-xs">Status</th>
-                                        <th class="col-medium center">Minimum Score</th>
-                                        <th class="col-medium center">Maximun Score</th>
-                                        <th class="col-medium center">Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr ng-repeat="modelinfo in modelinfos">
-                                        <!-- <td class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></td>-->
-                                        <td>
-                                            {{modelinfo.modelinfo.name}}
-                                        </td>
-                                        <!-- <td class="hidden-xs">
-                                            {{model.model.parentname}}
-                                        </td> -->
-                                        <td class="hidden-xs">
-                                            {{modelinfo.modelinfo.description}}
-                                        </td>
-                                        <td class="hidden-xs">
-                                            {{modelinfo.modelinfo.MinScore}}
-                                        </td>
-                                        <td class="hidden-xs">
-                                            {{modelinfo.modelinfo.MaxScore}}
-                                        </td>
-                                        <td class="hidden-xs">
-                                            {{modelinfo.modelinfo.status}}
-                                        </td>
-                                        <td class="col-medium center">
-                                            <div class="btn-group btn-group-xs ">
-                                                <a href="/modeldetail.html?id={{modelinfo._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
-                                                <a ng-click='modeldelete($index)' class="btn btn-danger"><i class="fa fa-times icon-only"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div><!-- /Portlet -->
-
+                    <ul class="nav nav-pills nav-stacked nav-tree" id="myTree" data-toggle="nav-tree">
+                        <li>
+                            <a href="#" target="_blank">Factor 1</a>
+                            <input type="hidden" id="Factor1" value="20%">
+                            <ul class="nav nav-pills nav-stacked nav-tree">
+                                <li>
+                                    <a href="#">Factor 1.1 - Weight: 50%</a>
+                                    <input type="hidden" id="Factor11" value="50%">
+                                    <ul class="nav nav-pills nav-stacked nav-tree">
+                                        <li>
+                                            <input type="radio" name="FactorOption1" id="FactorOption111" value="10" class="tc">
+                                            <span class="labels"> Factor Option 1.1.1 - Score: 10</span>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="FactorOption1" id="FactorOption112" value="20" class="tc">
+                                            <span class="labels"> Factor Option 1.1.2- Score: 20</span>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="FactorOption1" id="FactorOption113" value="30" class="tc">
+                                            <span class="labels"> Factor Option 1.1.3 - Score: 30</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Factor 1.2 - Weight: 30%</a>
+                                    <input type="hidden" id="Factor12" value="30%">
+                                    <ul class="nav nav-pills nav-stacked nav-tree">
+                                        <li>
+                                            <input type="radio" name="FactorOption2" id="FactorOption121" value="10" class="tc">
+                                            <span class="labels"> Factor Option 1.2.1 - Score: 10</span>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="FactorOption2" id="FactorOption122" value="20" class="tc">
+                                            <span class="labels"> Factor Option 1.2.2 - Score: 20</span>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="FactorOption2" id="FactorOption123" value="30" class="tc">
+                                            <span class="labels"> Factor Option 1.2.3 - Score: 30</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Factor 1.3 - Weight: 20%</a>
+                                    <input type="hidden" id="Factor13" value="20%">
+                                    <ul class="nav nav-pills nav-stacked nav-tree">
+                                        <li>
+                                            <input type="radio" name="FactorOption3" id="FactorOption131" value="10" class="tc">
+                                            <span class="labels"> Factor Option 1.3.1 - Score: 10</span>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="FactorOption3" id="FactorOption132" value="20" class="tc">
+                                            <span class="labels"> Factor Option 1.3.2 - Score: 20</span>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="FactorOption3" id="FactorOption133" value="30" class="tc">
+                                            <span class="labels"> Factor Option 1.3.3 - Score: 30</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                     <!-- END YOUR CONTENT HERE -->
 
                 </div>
@@ -292,11 +272,6 @@
 <script src="assets/js/plugins/pace/pace.min.js"></script>
 
 <!-- PAGE LEVEL PLUGINS JS -->
-<script src="assets/js/plugins/footable/footable.min.js"></script>
-
-<script src="assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="assets/js/plugins/datatables/datatables.js"></script>
-<script src="assets/js/plugins/datatables/datatables.responsive.js"></script>
 
 <!-- Themes Core Scripts -->
 <script src="assets/js/main.js"></script>
@@ -304,27 +279,7 @@
 <!-- REQUIRE FOR SPEECH COMMANDS -->
 <script src="assets/js/speech-commands.js"></script>
 <script src="assets/js/plugins/gritter/jquery.gritter.min.js"></script>
-
+<script src="js/plugins/bootstrap-treenav.js"></script>
 <!-- initial page level scripts for examples -->
-<script src="assets/js/plugins/slimscroll/jquery.slimscroll.init.js"></script>
-<script src="assets/js/plugins/footable/footable.init.js"></script>
-<script src="assets/js/plugins/datatables/datatables.init.js"></script>
-<script>
-    function modeldetail() {
-        window.location.assign("/modeldetail.html")
-    }
-    //for tables checkbox demo
-    jQuery(function($) {
-        $('table th input:checkbox').on('click' , function(){
-            var that = this;
-            $(this).closest('table').find('tr > td:first-child input:checkbox')
-                    .each(function(){
-                        this.checked = that.checked;
-                        $(this).closest('tr').toggleClass('selected');
-                    });
-
-        });
-    });
-</script>
 </body>
 </html>
