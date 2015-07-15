@@ -4,6 +4,8 @@
 var modelinfo={
     name:'',
     description:'',
+    maxscore: 0,
+    minscore:0,
     status:'DeActive'
 };
 var modelinfos={

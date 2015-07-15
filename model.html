@@ -221,20 +221,28 @@
                                         <!-- <th class="hidden-xs">parentname</th> -->
                                         <th class="hidden-xs">Description</th>
                                         <th class="hidden-xs">Status</th>
+                                        <th class="col-medium center">Minimum Score</th>
+                                        <th class="col-medium center">Maximun Score</th>
                                         <th class="col-medium center">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr ng-repeat="modelinfo in modelinfos">
                                         <!-- <td class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></td>-->
-                                         <td>
-                                             {{modelinfo.modelinfo.name}}
-                                         </td>
-                                         <!-- <td class="hidden-xs">
-                                             {{model.model.parentname}}
-                                         </td> -->
+                                        <td>
+                                            {{modelinfo.modelinfo.name}}
+                                        </td>
+                                        <!-- <td class="hidden-xs">
+                                            {{model.model.parentname}}
+                                        </td> -->
                                         <td class="hidden-xs">
                                             {{modelinfo.modelinfo.description}}
+                                        </td>
+                                        <td class="hidden-xs">
+                                            {{modelinfo.modelinfo.MinScore}}
+                                        </td>
+                                        <td class="hidden-xs">
+                                            {{modelinfo.modelinfo.MaxScore}}
                                         </td>
                                         <td class="hidden-xs">
                                             {{modelinfo.modelinfo.status}}

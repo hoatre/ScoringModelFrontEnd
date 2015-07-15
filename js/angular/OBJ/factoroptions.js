@@ -8,6 +8,6 @@ var factoroption={
 	status:''
 };
 var factoroptions={
-		_id:'',
-		factoroption:factoroption
+	_id:'',
+	factoroption:factoroption
 };

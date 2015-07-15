@@ -1,6 +1,6 @@
 //khai bao dia chi server
 var address_server = "http://localhost:8080";
-var address_server_scala = "http://10.15.171.21:8080";
+var address_server_scala = "http://10.15.171.35:8080";
 
 //khai bao duong dan
 //dung chung
@@ -53,6 +53,14 @@ var url_modellistangular = address_server+"/modellistangular";
 var url_modeldelete = address_server+"/modeldelete";
 var url_modeldetailangular = address_server+"/modeldetailangular";
 
+//rating
+var url_ratinglistangular = address_server+"/ratinglistangular";
+var url_ratinglistbymodelidangular = address_server+"/ratinglistbymodelidangular";
+var url_ratingdelete = address_server+"/ratingdelete";
+var url_ratingdetailangular = address_server+"/ratingdetailangular";
+
 //services scala
 var url_grouplistangular_scala = address_server_scala+"/group/getall";
+var url_groupdetailangular_scala = address_server_scala+"/group/getbygroupid";
 var url_groupdelete_scala = address_server_scala+"/group/delete";
+var url_groupupdate_scala = address_server_scala+"/group/update";

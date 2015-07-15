@@ -39,7 +39,16 @@
     <script src="assets/js/html5shiv.js"></script>
     <script src="assets/js/respond.min.js"></script>
     <![endif]-->
-	
+
+	  <!-- tree table -->
+	  <link rel="stylesheet" href="css/screen.css" media="screen" />
+	  <link rel="stylesheet" href="css/jquery.treetable.css" />
+	  <link rel="stylesheet" href="css/jquery.treetable.theme.default.css" />
+	  <!-- tree table -->
+	  <link rel="stylesheet" href="js/tree/src/treeGrid.css">
+	  <script src="js/tree/src/tree-grid-directive.js"></script>
+	  <script src="jquery.treetable.js"></script>
+
   </head>
 
   <body>
@@ -202,7 +211,7 @@
 								<div class="portlet"><!-- /Portlet -->
 									<div class="portlet-heading dark">
 										<div class="portlet-title">
-											<button type="button" onclick="moduledetail()" class="btn btn-primary">Add</button>
+											<button type="button" onclick="moduledetail()" class="btn btn-primary">add</button>
 										</div>
 										<div class="portlet-widgets">
 											<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>
@@ -217,10 +226,10 @@
 												<thead>
 													<tr>
 														<th class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></th>
-														<th>Name</th>
+														<th>modulename</th>
 														<!-- <th class="hidden-xs">parentname</th> -->
-														<th class="hidden-xs">Link</th>
-														<th class="hidden-xs">Display</th>
+														<th class="hidden-xs">link</th>
+														<th class="hidden-xs">displayforguess</th>
 														<th class="col-medium center">Action</th>
 													</tr>
 												</thead>
@@ -237,7 +246,7 @@
 															{{module.module.link}}
 														</td>
 														<td class="hidden-xs">
-															{{module.module.displayforguess == 1?'True':'False'}}
+															{{module.module.displayforguess == 1?'true':'false'}}
 														</td>
 														<td class="col-medium center">
 															<div class="btn-group btn-group-xs ">
