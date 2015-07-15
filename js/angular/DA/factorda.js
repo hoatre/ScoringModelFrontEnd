@@ -50,7 +50,7 @@ function actionfactordetailangular($scope,$http,url)
 {
 	//alert($scope.groups._id);
 	$scope.save = function(){
-		if(!$scope.formFartor.$valid) {
+		if(!$scope.formFactor.$valid) {
 			return;
 		}
 		$http.post(url, {factors:$scope.factordetail}).
