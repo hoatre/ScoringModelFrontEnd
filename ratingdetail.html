@@ -224,7 +224,7 @@
                                     <label class="col-sm-3 control-label">Code:</label>
                                     <div class="col-sm-5">
                                         <div class="clearfix">
-                                            <input type="text" style="width:200px" tabindex="1" ng-model="ratings.rating.code" required>
+                                            <input type="text" style="width:200px" tabindex="1" ng-model="ratings.code" required>
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +232,7 @@
                                     <label class="col-sm-3 control-label">From:</label>
                                     <div class="col-sm-4">
                                         <div class="clearfix">
-                                            <input type="text" style="width:200px" tabindex="1" ng-model="ratings.rating.scorefrom">
+                                            <input type="text" style="width:200px" tabindex="1" ng-model="ratings.scorefrom">
                                         </div>
                                     </div>
                                 </div>
@@ -240,17 +240,17 @@
                                     <label class="col-sm-3 control-label">Up To:</label>
                                     <div class="col-sm-4">
                                         <div class="clearfix">
-                                            <input type="text" style="width:200px" tabindex="1" ng-model="ratings.rating.scoreto">
+                                            <input type="text" style="width:200px" tabindex="1" ng-model="ratings.scoreto">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Status:</label>
                                     <div class="col-sm-4">
-                                        <select id="cboStatus" name="cboStatus" style="width:200px" ng-model="ratings.rating.status" required>
-                                            <option value="2">Approve</option>
-                                            <option value="1">Underwriting</option>
-                                            <option value="0">Reject</option>
+                                        <select id="cboStatus" name="cboStatus" style="width:200px" ng-model="ratings.status" required>
+                                            <option value="Approve">Approve</option>
+                                            <option value="Underwriting">Underwriting</option>
+                                            <option value="Reject">Reject</option>
                                         </select>
                                     </div>
                                 </div>

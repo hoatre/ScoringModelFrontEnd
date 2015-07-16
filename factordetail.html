@@ -231,7 +231,7 @@
 										<label class="col-sm-3 control-label">Model:</label>
 										<div class="col-sm-5">
 											<div class="clearfix">
-												<select id="cboModel" style="width:200px"  name="cboModel" ng-model="factordetail.factor.modelinfoid" ng-options="modelinfo._id as modelinfo.modelinfo.name for modelinfo in modelinfos">
+												<select id="cboModel" style="width:200px"  name="cboModel" ng-model="factordetail.ModelId" ng-options="modelinfo._id as modelinfo.name for modelinfo in modelinfos" ng-change="modeldetailChanged(factordetail.ModelId)">
 													<option value="">Please select</option>
 												</select>
 											</div>
@@ -241,7 +241,7 @@
 										<label class="col-sm-3 control-label">Factor:</label>
 										<div class="col-sm-5">
 											<div class="clearfix">
-												<select id="cboFactor" style="width:200px" name="cboFactor" ng-model="factordetail.factor.parentid" ng-options="factor._id as factor.factor.name for factor in factors">
+												<select id="cboFactor" style="width:200px" name="cboFactor" ng-model="factordetail.Parentid" ng-options="factor._id as factor.FactorName for factor in factors">
 													<option value="">Please select</option>
 												</select>
 											</div>
@@ -251,7 +251,7 @@
 										<label class="col-sm-3 control-label">Name:</label>
 										<div class="col-sm-5">
 											<div class="clearfix">
-												<input type="text" name="name" style="width:200px" tabindex="1" ng-model="factordetail.factor.name" required>
+												<input type="text" name="name" style="width:200px" tabindex="1" ng-model="factordetail.FactorName" required>
 												<span class="error" ng-show="formFartor.name.$error.required">Required</span>
 											</div>
 										</div>
@@ -260,15 +260,15 @@
 										<label class="col-sm-3 control-label" for="subscription">Description:</label>
 										<div class="col-sm-3">
 											<div class="clearfix">
-												<input type="text" name="description" style="width:200px" tabindex="2" ng-model="factordetail.factor.description">
+												<input type="text" name="description" style="width:200px" tabindex="2" ng-model="factordetail.Description">
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label">Weigth:</label>
+										<label class="col-sm-3 control-label">Weight:</label>
 										<div class="col-sm-3">
 											<div class="clearfix">
-												<input type="text" name="weigth" style="width:200px" tabindex="3" ng-model="factordetail.factor.weigth" required>
+												<input type="text" name="weigth" style="width:200px" tabindex="3" ng-model="factordetail.Weight" required>
 												<span class="error" ng-show="formFartor.weigth.$error.required">Required</span>
 											</div>
 										</div>
