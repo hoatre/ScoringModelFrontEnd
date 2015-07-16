@@ -1,12 +1,13 @@
-var factor={
-	parentid:'',
-	parentname:'',
-	name:'',
-	description:'',
-	weigth:'',
-	status:''
-};
 var factors={
-		_id:'',
-		factor:factor
+	ModelId:'',
+	Note:'',
+	FactorName:'',
+	Description:'',
+	Ordinal:'',
+	PathFactor:'',
+	Parentid:'',
+	ParentName:'',
+	Status:'',
+	Weight:'',
+	_id:''
 };

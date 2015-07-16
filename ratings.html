@@ -210,7 +210,7 @@
                                 <label class="col-sm-3 control-label">Model:</label>
                                 <div class="col-sm-5">
                                     <div class="clearfix">
-                                        <select id="cboFactor" style="width:200px" name="cboFactor" ng-model="choiceModel" ng-options="modelinfo._id as modelinfo.modelinfo.name for modelinfo in modelinfos" ng-change="modelChanged(choiceModel)">
+                                        <select id="cboModel" style="width:200px" name="cboModel" ng-model="choiceModel" ng-options="modelinfo._id as modelinfo.name for modelinfo in modelinfos" ng-change="modelChanged(choiceModel)">
                                             <option value="">Please select</option>
                                         </select>
                                     </div>
@@ -221,7 +221,8 @@
                     <div class="portlet"><!-- /Portlet -->
                         <div class="portlet-heading dark">
                             <div class="portlet-title">
-                                <h4>Scoring Ranges</h4>
+                                <!--<h4>Scoring Ranges</h4>-->
+                                <button type="button" ng-click='gennerateScoringRange()' class="btn btn-primary">Gennerate Scoring Range</button>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -240,7 +241,7 @@
                                             Minimum Score
                                         </td>
                                         <td class="hidden-xs">
-                                            {{modelinfodetail.modelinfo.minscore}}
+                                            {{modelinfodetail.min}}
                                         </td>
                                     </tr>
                                     <tr>
@@ -248,7 +249,7 @@
                                             Maximum Score
                                         </td>
                                         <td class="hidden-xs">
-                                            {{modelinfodetail.modelinfo.maxscore}}
+                                            {{modelinfodetail.max}}
                                         </td>
                                     </tr>
                                     </tbody>
@@ -259,7 +260,7 @@
                     <div class="portlet"><!-- /Portlet -->
                         <div class="portlet-heading dark">
                             <div class="portlet-title">
-                                <button type="button" ng-click='ratingAdd()' class="btn btn-primary">Add</button>
+                                <button type="button" ng-click='ratingAdd()' class="btn btn-primary">Action</button>
                                 <button type="button" ng-click='ratingCheckRating()' class="btn btn-primary">Check Rating</button>
                             </div>
                             <div class="portlet-widgets">
@@ -285,20 +286,20 @@
                                     <tr ng-repeat="rating in ratings">
                                         <td class="col-small center"><label><input type="checkbox" class="tc"><span class="labels"></span></label></td>
                                         <td class="hidden-xs">
-                                            {{rating.rating.code}}
+                                            {{rating.code}}
                                         </td>
                                         <td class="hidden-xs">
-                                            {{rating.rating.scorefrom}}
+                                            {{rating.scorefrom}}
                                         </td>
                                         <td class="hidden-xs">
-                                            {{rating.rating.scoreto}}
+                                            {{rating.scoreto}}
                                         </td>
                                         <td class="hidden-xs">
-                                            {{rating.rating.status}}
+                                            {{rating.status}}
                                         </td>
                                         <td class="col-medium center">
                                             <div class="btn-group btn-group-xs ">
-                                                <a href="/ratingdetail.html?id={{rating._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+                                                <a href="/ratingdetail.html?modelid={{modelforrating.modelid}}&id={{rating.code}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
                                                 <a ng-click='ratingdelete($index)' class="btn btn-danger"><i class="fa fa-times icon-only"></i></a>
                                             </div>
                                         </td>

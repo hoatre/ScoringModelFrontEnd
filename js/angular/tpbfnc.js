@@ -81,7 +81,7 @@ function geturlidhtml(url)
 function geturlvaluehtml(url,parameter)
 {
  var strarr;
- strarr=url.split('?');
+ strarr=url.replace('&','?').split('?');
  if(strarr.length>1)
  {
 	 for(var i=0;i<strarr.length;i++)
@@ -91,9 +91,10 @@ function geturlvaluehtml(url,parameter)
 		 {
 			 for(var j=0;j<strarr1.length;j++)
 			 {
+
 				 if(strarr1[0]==parameter)
 				 {
-					 return strarr1[i];
+					 return strarr1[1];
 				 }
 			 }
 		 }

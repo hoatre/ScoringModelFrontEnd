@@ -64,3 +64,28 @@ var url_grouplistangular_scala = address_server_scala+"/group/getall";
 var url_groupdetailangular_scala = address_server_scala+"/group/getbygroupid";
 var url_groupdelete_scala = address_server_scala+"/group/delete";
 var url_groupupdate_scala = address_server_scala+"/group/update";
+
+//model
+var url_modellistangular_scala = address_server_scala+"/modelinfo/getall";
+var url_modeldetailangular_scala = address_server_scala+"/modelinfo/getbymodelinfoid";
+var url_modelrangerandupdateangular_scala = address_server_scala+"/modelinfo/rangeandupdate";
+
+//rating
+var url_ratinglistangular_scala = address_server_scala+"/rating/getall";
+var url_ratinglistbymodelidangular_scala = address_server_scala+"/rating/getmodelid";
+var url_ratingdelete_scala = address_server_scala+"/rating/delete";
+var url_ratingdetailangular_scala = address_server_scala+"/rating/getcode";
+var url_ratinginsertangular_scala = address_server_scala+"/rating/insert";
+var url_ratingupdatetangular_scala = address_server_scala+"/rating/update";
+
+//factor
+var url_factorlisbymodelidtangular_scala = address_server_scala+"/modelinfo/view";
+var url_factordetailbyfactoridtangular_scala = address_server_scala+"/factor/getbyfactorid";
+var url_factorlistangular_scala = address_server_scala+"/factor/getall";
+var url_factorupdateangular_scala = address_server_scala+"/factor/update";
+
+
+//model Test
+var url_modelGetAll = address_server_scala+"/modelinfo/getall";
+var url_modelGetAllFactor = address_server_scala+"/modelinfo/view";
+var url_modelGetScore = address_server_scala+"/scoreresult";
