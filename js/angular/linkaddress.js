@@ -86,5 +86,6 @@ var url_factorupdateangular_scala = address_server_scala+"/factor/update";
 
 
 //model Test
-var url_modelGetAll = address_server+"/modelinfo/getall";
-var url_modelGetAllFactor = address_server+"/modelinfo/view";
+var url_modelGetAll = address_server_scala+"/modelinfo/getall";
+var url_modelGetAllFactor = address_server_scala+"/modelinfo/view";
+var url_modelGetScore = address_server_scala+"/scoreresult";
