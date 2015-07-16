@@ -3,16 +3,15 @@
  */
 
 app.controller('modelTestController', function ($scope, $http) {
-
+    $scope.message = '';
     $scope.models = [];
     $scope.factors = [];
-    $scope.rootFactors = [];
     $scope.selectModel = '';
 
     $scope.getAllModels = function(){
         $http.get(url_modelGetAll)
             .success(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.models = data['ModelInfosList'];
             });
     }
@@ -23,11 +22,11 @@ app.controller('modelTestController', function ($scope, $http) {
             success(function(data, status, headers, config) {
                 //console.log(data);
                 $scope.factors = data['SUCCESS'];
-                //$scope.rootFactors = $scope.getFactorByParentId('');
             })
-            .error(function(data, status, headers, config) {
+            .error(function(error, status, headers, config) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
+                $scope.message = error;
             });
     };
 
@@ -40,10 +39,45 @@ app.controller('modelTestController', function ($scope, $http) {
                 result.push(element);
             }
         });
-        console.log("parentId:" + parentId);
-        console.info(result)
+        //console.log("parentId:" + parentId);
+        //console.info(result)
         return result;
+    };
+
+    $scope.submit = function(){
+        var options = $scope.getOptions();
+        console.info(options)
+
+        $http.post(url_modelGetScore, options).
+            success(function(data, status, headers, config) {
+                //console.log(data);
+                $scope.message = data;
+            })
+            .error(function(error, status, headers, config) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                $scope.message = error;
+            });
+    };
+
+    $scope.optionValidate = function () {
+        var check = false;
+        if ($('#frmMain input:radio:checked').length == 0) {
+            alert('You must choose!');
+            return false;
+        }
+        return true;
     }
 
+    $scope.getOptions = function () {
+
+        var result = '';
+        $('#frmMain input:radio:checked').each(function () {
+            result += "," + $(this).val();
+        });
+        //alert('{listresult: [' + result.substring(1) + ']}');
+
+        return '{"modelid": "' + $scope.selectModel + '", "listresult":[' + result.substring(1) + ']}';
+    }
     $scope.getAllModels();
 });

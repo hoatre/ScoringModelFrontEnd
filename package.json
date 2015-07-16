@@ -1,0 +1,10 @@
+{
+  "name": "Score Card",
+  "description": "Score Card",
+  "version": "0.0.1",
+  "main": "server.js",
+  "dependencies": {
+    "connect": "latest",
+    "serve-static": "latest"
+  }
+}
