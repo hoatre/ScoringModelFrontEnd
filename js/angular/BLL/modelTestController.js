@@ -67,10 +67,9 @@ app.controller('modelTestController', function ($scope, $http) {
             return false;
         }
         return true;
-    }
+    };
 
     $scope.getOptions = function () {
-
         var result = '';
         $('#frmMain input:radio:checked').each(function () {
             result += "," + $(this).val();
@@ -78,6 +77,6 @@ app.controller('modelTestController', function ($scope, $http) {
         //alert('{listresult: [' + result.substring(1) + ']}');
 
         return '{"modelid": "' + $scope.selectModel + '", "listresult":[' + result.substring(1) + ']}';
-    }
+    };
     $scope.getAllModels();
 });
