@@ -3,10 +3,13 @@
  */
 
 app.controller('modelTestController', function ($scope, $http) {
-    $scope.message = '';
+
     $scope.models = [];
     $scope.factors = [];
     $scope.selectModel = '';
+
+    $scope.message = '';
+    $scope.messageClass = 'col-md-6 wel bg-info';
 
     $scope.getAllModels = function(){
         $http.get(url_modelGetAll)
@@ -14,7 +17,7 @@ app.controller('modelTestController', function ($scope, $http) {
                 //console.log(data);
                 $scope.models = data['ModelInfosList'];
             });
-    }
+    };
 
     $scope.getFactorByModelId = function(modelId){
 
@@ -51,7 +54,25 @@ app.controller('modelTestController', function ($scope, $http) {
         $http.post(url_modelGetScore, options).
             success(function(data, status, headers, config) {
                 //console.log(data);
-                $scope.message = data;
+                if (data['Status'] == 'Approve') {
+                    $scope.messageClass = 'col-md-6 wel bg-success';
+
+                    $scope.message = 'Congratulations! Your loan is approved subject to confirmation of the details you have provided. Check your mail for next steps.'
+                }
+                else if (data['Status'] == 'Underwriting'){
+                    $scope.messageClass = 'col-md-6 wel bg-warning';
+
+                    $scope.message = 'Underwriting'
+
+                }
+                else if (data['Status'] == 'Reject'){
+                    $scope.messageClass = 'col-md-6 wel bg-danger';
+                    $scope.message = 'Reject'
+
+                }
+                else
+                    $scope.messageClass = 'col-md-6 wel bg-info';
+                //$scope.message = data;
             })
             .error(function(error, status, headers, config) {
                 // called asynchronously if an error occurs
