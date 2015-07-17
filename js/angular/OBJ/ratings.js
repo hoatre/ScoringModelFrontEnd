@@ -6,7 +6,7 @@ var ratings={
     code:'',
     scorefrom : 0.0,
     scoreto : 0.0,
-    status : '',
+    status : 'Approve',
     statusname: '',
     note:"",
 };

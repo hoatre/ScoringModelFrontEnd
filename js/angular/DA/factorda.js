@@ -128,11 +128,11 @@ function modelChanged($scope,$http)
 							$("#treeGrid").jqxTreeGrid('expandRow', '2');
 						},
 						columns: [
-							{ text: 'Name', columnGroup: 'name', dataField: 'name', width: 300},
+							{ text: 'Name', columnGroup: 'name', dataField: 'name', width: 500},
 							{ text: 'Description', dataField: 'description'},
-							{ text: 'Weight', columnGroup: 'weight', dataField: 'weight'},
+							{ text: 'Weight', columnGroup: 'weight', dataField: 'weight',width: 80},
 							{
-								text: 'Action', cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false, dataField: null, cellsRenderer: function (row, column, value) {
+								text: 'Action', cellsAlign: 'center', align: "center",width: 130, columnType: 'none', editable: false, sortable: false, dataField: null, cellsRenderer: function (row, column, value) {
 								// render custom column.
 								//alert($scope.modelinfodetail.Status);
 								if($scope.modelinfodetail.status=='draft')
@@ -205,7 +205,8 @@ function factordelete($scope,$http,url)
 		$http.post(url, {id:$scope.factors[index]._id}).
 		  success(function(data, status, headers, config) {
 			//alert(data);
-			window.location.assign("/factors.html")
+			//window.location.assign("/factors.html")
+			$scope.factors.splice(index, 1);
 		  }).
 		  error(function(data, status, headers, config) {
 			// called asynchronously if an error occurs

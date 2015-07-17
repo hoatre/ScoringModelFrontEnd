@@ -119,7 +119,10 @@ function ratingdelete($scope,$http,url)
         $http.post(url, {modelid:$scope.modelforrating.modelid,code:$scope.ratings[index].code}).
             success(function(data, status, headers, config) {
                 //alert(data);
-                window.location.assign("/ratings.html")
+                //alert($scope.ratings.length);
+                $scope.ratings.splice(index, 1);
+                //alert($scope.ratings.length);
+                //window.location.assign("/ratings.html")
             }).
             error(function(data, status, headers, config) {
                 // called asynchronously if an error occurs
