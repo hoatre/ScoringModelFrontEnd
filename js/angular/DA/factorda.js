@@ -146,7 +146,22 @@ function modelChanged($scope,$http)
 	}
 }
 
+function gennerateScoringRange($scope,$http)
+{
+	$scope.gennerateScoringRange = function(index){
+		//alert(url_modelrangerandupdateangular_scala);
+		$http.post(url_modelrangerandupdateangular_scala, {id:$scope.modelinfodetail._id}).
+			success(function(data, status, headers, config) {
+				$scope.modelinfodetail = data["SUCCESS"];
+				//alert($scope.modelinfodetail.name+"-->"+$scope.modelinfodetail.min);
+			}).
+			error(function(data, status, headers, config) {
+				// called asynchronously if an error occurs
+				// or server returns response with an error status.
+			});
 
+	}
+}
 
 
 //load form list modellist

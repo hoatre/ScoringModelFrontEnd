@@ -25,11 +25,31 @@ function modelChanged($scope,$http)
 {
 	$scope.modelChanged = function(id) {
 		//alert(id);
+		for(var i=0;i<$scope.modelinfos.length;i++)
+		{
+			if($scope.modelinfos[i]._id==id)
+			{
+				$scope.modelinfodetail=$scope.modelinfos[i];
+				//alert($scope.modelinfodetail.min);
+			}
+		}
+		//alert(url_ratinglistbymodelidangular_scala+"/"+id);
+		if($scope.modelinfodetail.status=='draft')
+		{
+			$('#btnInsert').show();
+		}
+		else
+		{
+			$('#btnInsert').hide();
+		}
 		$http.post(url_factoroptionbymodelid_scala, {modelid: id}).
 			success(function (data, status, headers, config) {
 				//console.log(data["SUCCESS"]);
 				//alert(data);
-				$scope.factors = data["SUCCESS"];
+				if(typeof data["ERROR"]=='undefined')
+				{
+					$scope.factors = data["SUCCESS"];
+				}
 			}).
 			error(function (data, status, headers, config) {
 				// called asynchronously if an error occurs
@@ -46,7 +66,9 @@ function factorChanged($scope,$http,url)
 			if($scope.factors[i]._id==id)
 			{
 				//alert($scope.factors[i]["FactorOption"][0].FactorOptionName);
-				$scope.factoroptions = $scope.factors[i]["FactorOption"];
+
+					$scope.factoroptions = $scope.factors[i]["FactorOption"];
+
 			}
 		}
    }
