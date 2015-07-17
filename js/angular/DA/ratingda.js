@@ -47,8 +47,21 @@ function modelChanged($scope,$http)
             })
             $scope.ratings = data;*/
                 //alert(data["SUCCESS"][0]["codein"].code)
-                $scope.ratings = data["SUCCESS"][0]["codein"];
-                $scope.modelforrating = data["SUCCESS"][0];
+
+                //$scope.ratings =ratings;
+                //alert(data["ERROR"]);
+                if(typeof data["ERROR"]=='undefined')
+                {
+                    $scope.modelforrating = data["SUCCESS"][0];
+                    $scope.ratings = data["SUCCESS"][0]["codein"];
+                }
+                else
+                {
+                    //alert('AA');
+                    $scope.modelforrating=[];
+                    $scope.ratings=[];
+                }
+
         })
     }
 }

@@ -56,50 +56,24 @@ function modelChanged($scope,$http)
 		$http.post(url_factorlisbymodelidtangular_scala, {id:$scope.modelinfodetail._id}).
 			success(function(data, status, headers, config) {
 				//$scope.modelinfodetail = data["SUCCESS"];
-				//alert(data["SUCCESS"].length);
+				//alert(data);
 				var factortreelist=[];
-				if(typeof data != 'undefined')
+				if(typeof data["ERROR"]=='undefined')
 				{
-					if(data["SUCCESS"].length<1)
+					for(var i=0;i<data["SUCCESS"].length;i++)
 					{
-						/*var factortree = {
-							"factorid": '',
-							"parentid": '',
-							"name": '',
-							"description":'',
-							"weight":'',
-							"status":''
+						var factortree = {
+							"factorid": data["SUCCESS"][i]._id,
+							"parentid": data["SUCCESS"][i].Parentid,
+							"name": data["SUCCESS"][i].FactorName,
+							"description":data["SUCCESS"][i].Description,
+							"weight":data["SUCCESS"][i].Weight,
+							"status":data["SUCCESS"][i].Status
 						};
-						factortreelist.push(factortree);*/
-					}
-					else
-					{
-						for(var i=0;i<data["SUCCESS"].length;i++)
-						{
-							var factortree = {
-								"factorid": data["SUCCESS"][i]._id,
-								"parentid": data["SUCCESS"][i].Parentid,
-								"name": data["SUCCESS"][i].FactorName,
-								"description":data["SUCCESS"][i].Description,
-								"weight":data["SUCCESS"][i].Weight,
-								"status":data["SUCCESS"][i].Status
-							};
-							factortreelist.push(factortree);
-						}
+						factortreelist.push(factortree);
 					}
 				}
-				else
-				{
-					var factortree = {
-						"factorid": '',
-						"parentid": '',
-						"name": '',
-						"description":'',
-						"weight":'',
-						"status":''
-					};
-					factortreelist.push(factortree);
-				}
+				//alert(1);
 				// prepare the data
 				var source =
 				{
@@ -120,6 +94,7 @@ function modelChanged($scope,$http)
 					id: 'factorid',
 					localData: factortreelist
 				};
+				//alert(2);
 				var dataAdapter = new $.jqx.dataAdapter(source);
 				// create Tree Grid
 				$("#treeGrid").jqxTreeGrid(
@@ -144,10 +119,11 @@ function modelChanged($scope,$http)
 							}
 							}
 						],
-						columnGroups: [
+						/*columnGroups: [
 							{ text: 'Name', name: 'Name' }
-						]
+						]*/
 					});
+				//alert(3);
 			}).
 			error(function(data, status, headers, config) {
 				// called asynchronously if an error occurs
