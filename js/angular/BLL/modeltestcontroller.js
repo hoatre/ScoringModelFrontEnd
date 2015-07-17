@@ -6,7 +6,10 @@ app.controller('modelTestController', function ($scope, $http) {
 
     $scope.models = [];
     $scope.factors = [];
+    $scope.ratings = [];
     $scope.selectModel = '';
+
+    $scope.currentModel = {};
 
     $scope.message = '';
     $scope.messageClass = 'col-md-6 wel bg-info';
@@ -81,6 +84,32 @@ app.controller('modelTestController', function ($scope, $http) {
             });
     };
 
+    $scope.getRatingByModelId = function (modelId){
+        $http.get(url_ratinglistbymodelidangular_scala+"/"+modelId)
+            .success(function (data) {
+                //console.log(data);
+                if(typeof data["ERROR"]=='undefined')
+                {
+                    $scope.ratings = data["SUCCESS"][0]["codein"];
+                }
+            });
+    }
+
+    $scope.cboModelChange = function (modelId){
+        $scope.getFactorByModelId(modelId);
+        $scope.getRatingByModelId(modelId);
+
+        for(var i=0;i<$scope.models.length;i++)
+        {
+            if($scope.models[i]._id == modelId)
+            {
+                $scope.currentModel = $scope.models[i];
+                console.log($scope.currentModel);
+                break;
+            }
+        }
+    }
+
     $scope.optionValidate = function () {
         var check = false;
         if ($('#frmMain input:radio:checked').length == 0) {
@@ -99,5 +128,7 @@ app.controller('modelTestController', function ($scope, $http) {
 
         return '{"modelid": "' + $scope.selectModel + '", "listresult":[' + result.substring(1) + ']}';
     };
+
+
     $scope.getAllModels();
 });
