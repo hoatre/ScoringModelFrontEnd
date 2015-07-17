@@ -94,3 +94,8 @@ var url_factoroptiondelete_scala = address_server_scala+"/factor/deleteOption";
 var url_factoroptioninsert_scala = address_server_scala+"/factor/insertOption";
 var url_factoroptionupdate_scala = address_server_scala+"/factor/updateOption";
 var url_factoroptiondetail_scala = address_server_scala+"/factoroption/getbyfactoroptionid";
+
+//model Test
+var url_modelGetAll = address_server_scala+"/modelinfo/getall";
+var url_modelGetAllFactor = address_server_scala+"/modelinfo/view";
+var url_modelGetScore = address_server_scala+"/scoreresult";
