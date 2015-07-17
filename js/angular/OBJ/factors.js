@@ -3,7 +3,7 @@ var factors={
 	Note:'',
 	FactorName:'',
 	Description:'',
-	Ordinal:'',
+	Ordinal:0,
 	PathFactor:'',
 	Parentid:'',
 	ParentName:'',

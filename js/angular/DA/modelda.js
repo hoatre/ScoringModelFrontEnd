@@ -10,7 +10,7 @@ function modellistangular($scope,$http,url)
     $http.get(url)
         .success(function (data) {
             //alert(data);
-            $scope.modelinfos = data;
+            $scope.modelinfos = data["ModelInfosList"];
         })
 }
 
@@ -38,18 +38,41 @@ function getmodeldetailangular($scope,$http,url)
     $http.get(url)
         .success(function (data) {
             //alert(data);
-            $scope.modeldetail = data;
+            $scope.modeldetail = data["ModelInfosList"][0];
         })
 }
 
-function actionmodeldetailangular($scope,$http,url)
+function actionmodeldetailangular($scope,$http)
 {
     $scope.save = function(){
         //alert(url);
+        var url="";
         if(!$scope.formModel.$valid) {
             return;
         }
-        $http.post(url, {modelinfos:$scope.modeldetail}).
+        var models={};
+        if(typeof $scope.modeldetail == 'undefined'||$scope.modeldetail._id =='')
+        {
+            //alert(url_modelinsertangular_scala);
+            models={
+                name : $scope.modeldetail.name,
+                description: $scope.modeldetail.description,
+                status:$scope.modeldetail.status
+            };
+            url = url_modelinsertangular_scala;
+            //alert(models.name);
+        }
+        else
+        {
+            models={
+                id : $scope.modeldetail._id,
+                name : $scope.modeldetail.name,
+                description: $scope.modeldetail.description,
+                status:$scope.modeldetail.status
+            };
+            url = url_modelupdateangular_scala;
+        }
+        $http.post(url, angular.toJson(models)).
             success(function(data, status, headers, config) {
                 window.location.assign("/model.html")
             }).

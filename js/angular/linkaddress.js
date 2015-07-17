@@ -93,3 +93,4 @@ var url_factorinsertangular_scala = address_server_scala+"/factor/insert";
 var url_factoroptiondelete_scala = address_server_scala+"/factor/deleteOption";
 var url_factoroptioninsert_scala = address_server_scala+"/factor/insertOption";
 var url_factoroptionupdate_scala = address_server_scala+"/factor/updateOption";
+var url_factoroptiondetail_scala = address_server_scala+"/factoroption/getbyfactoroptionid";

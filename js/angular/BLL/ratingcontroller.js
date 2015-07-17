@@ -21,5 +21,5 @@ app.controller('ratinglistController', function ($scope, $http) {
     var id="/"+geturlvaluehtml($location.absUrl(),"id");
     var modelid="/"+geturlvaluehtml($location.absUrl(),"modelid");
     getratingdetailangular($scope,$http,url_ratingdetailangular_scala+modelid+id);
-    actionratingdetailangular($scope,$http);
+    actionratingdetailangular($scope,$http,modelid);
 })
