@@ -3,8 +3,8 @@
  */
 
 app.controller('modellistController', function ($scope, $http) {
-    modellistangular($scope,$http,url_modellistangular);
-    modeldelete($scope,$http,url_modeldelete);
+    modellistangular($scope,$http,url_modellistangular_scala);
+    modeldelete($scope,$http,url_modeldeleteangular_scala);
 }).controller('modellistAction', function ($scope, $http) {
     modelcheckroleaction($scope,$http,'/modellist');
 }).controller('modelDetailController', function ($scope, $http,$location) {
@@ -19,6 +19,6 @@ app.controller('modellistController', function ($scope, $http) {
      });*/
     //testabc($scope,$http,"http://10.15.171.21:8080/users/getall");
     //modellistangular($scope,$http,url_modellistangular);
-    getmodeldetailangular($scope,$http,url_modeldetailangular+"/"+geturlidhtml($location.absUrl()));
-    actionmodeldetailangular($scope,$http,url_modeldetailangular);
+    getmodeldetailangular($scope,$http,url_modeldetailangular_scala+"/"+geturlidhtml($location.absUrl()));
+    actionmodeldetailangular($scope,$http);
 })

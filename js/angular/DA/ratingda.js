@@ -58,12 +58,13 @@ function ratingCheckRating($scope,$http)
     $scope.ratingCheckRating = function(){
         for(var i=0;i<($scope.ratings.length-1);i++)
         {
-            if($scope.ratings[i].rating.scoreto!=$scope.ratings[i+1].rating.scorefrom)
+            if($scope.ratings[i].scoreto!=$scope.ratings[i+1].scorefrom)
             {
                 alert("Rating in model false!");
                 return false;
             }
         }
+        alert("Rating in model true!");
     }
 }
 
@@ -122,48 +123,32 @@ function getmodeldetailangular($scope,$http,url)
     //alert(url);
     $http.get(url)
         .success(function (data) {
-            //alert(data["ModelInfosList"]);
+            //alert(data["SUCCESS"]);
             $scope.modeldetail = data["ModelInfosList"][0];
         })
 }
 
-function actionratingdetailangular($scope,$http)
+function actionratingdetailangular($scope,$http,modelid)
 {
     $scope.save = function(){
         var url="";
         var ratingobj={};
-
-        if(typeof $scope.ratingfull == 'undefined')
-        {
-            //alert(url_ratinginsertangular_scala);
-            //alert($scope.ratingfull["codein"].length)
-            var codein={
-                code:$scope.ratings.code,
-                scorefrom : $scope.ratings.scorefrom,
-                scoreto : $scope.ratings.scoreto,
-                status : $scope.ratings.status,
-                statusname: $scope.ratings.statusname,
-                note:$scope.ratings.note
-            };
-            ratingobj={
-                modelid:$scope.modeldetail._id,
-                codein:codein
-            };
-            url=url_ratinginsertangular_scala;
-        }
-        else{
-            //alert(url_ratingupdatetangular_scala);
-            ratingobj={
-                modelid:$scope.modeldetail._id,
-                code:$scope.ratings.code,
-                scorefrom : $scope.ratings.scorefrom,
-                scoreto : $scope.ratings.scoreto,
-                status : $scope.ratings.status,
-                statusname: $scope.ratings.statusname
-            };
-            url=url_ratingupdatetangular_scala;
-        }
-        alert(angular.toJson(ratingobj));
+        //alert("aaa");
+        var codein={
+            code:$scope.ratings.code,
+            scorefrom : $scope.ratings.scorefrom,
+            scoreto : $scope.ratings.scoreto,
+            status : $scope.ratings.status,
+            statusname: $scope.ratings.statusname,
+            note:$scope.ratings.note
+        };
+        ratingobj={
+            modelid:$scope.modeldetail._id,
+            codein:codein
+        };
+        url=url_ratinginsertangular_scala;
+        //alert(url);
+        //alert(angular.toJson(ratingobj));
         if(checkrating($scope,$http,$scope.ratings))
         {
             $http.post(url, angular.toJson(ratingobj)).

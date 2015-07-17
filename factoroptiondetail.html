@@ -213,17 +213,17 @@
 										<label class="col-sm-3 control-label">Factor:</label>
 										<div class="col-sm-5">
 											<div class="clearfix">
-												<select id="cboFactor" name="cboFactor" style="width:200px" ng-model="factoroptions.factoroption.factorid" ng-options="factor._id as factor.factor.name for factor in factors" required>
+												<select id="cboFactor" name="cboFactor" style="width:200px" ng-model="choiceFactor" ng-options="factor._id as factor.FactorName for factor in factors" required>
 													<option value="">Please select</option>
 												</select>
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label" for="name">Name:</label>
+										<label class="col-sm-3 control-label" >Name:</label>
 										<div class="col-sm-5">
 											<div class="clearfix">
-												<input type="text" name="name" tabindex="1" style="width:200px" ng-model="factoroptions.factoroption.name" required>
+												<input type="text" name="name" tabindex="1" style="width:200px" ng-model="factoroptiondetail.FactorOptionName" required>
 											</div>
 										</div>
 									</div>
@@ -231,15 +231,15 @@
 										<label class="col-sm-3 control-label" >Description:</label>
 										<div class="col-sm-3">
 											<div class="clearfix">
-												<input type="text" name="description" tabindex="1" style="width:200px" ng-model="factoroptions.factoroption.description">
+												<input type="text" name="description" tabindex="1" style="width:200px" ng-model="factoroptiondetail.Description">
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label" for="score">Score:</label>
+										<label class="col-sm-3 control-label" >Score:</label>
 										<div class="col-sm-3">
 											<div class="clearfix">
-												<input type="text" tabindex="1" name="score" style="width:200px" ng-model="factoroptions.factoroption.score" class="numberinput" required>
+												<input type="text" tabindex="1" name="score" style="width:200px" ng-model="factoroptiondetail.Score" class="numberinput" required>
 											</div>
 										</div>
 									</div>
@@ -247,7 +247,7 @@
 										<label class="col-sm-3 control-label">Fatal:</label>
 										<div class="col-sm-4">
 											<div class="clearfix">
-												<input type="text" tabindex="1" name="fatal" style="width:200px" ng-model="factoroptions.factoroption.fatal">
+												<input type="text" tabindex="1" name="fatal" style="width:200px" ng-model="factoroptiondetail.Fatal">
 											</div>
 										</div>
 									</div>

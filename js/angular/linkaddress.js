@@ -69,6 +69,10 @@ var url_groupupdate_scala = address_server_scala+"/group/update";
 var url_modellistangular_scala = address_server_scala+"/modelinfo/getall";
 var url_modeldetailangular_scala = address_server_scala+"/modelinfo/getbymodelinfoid";
 var url_modelrangerandupdateangular_scala = address_server_scala+"/modelinfo/rangeandupdate";
+var url_modelinsertangular_scala = address_server_scala+"/modelinfo/insert";
+var url_modelupdateangular_scala = address_server_scala+"/modelinfo/update";
+var url_modeldeleteangular_scala = address_server_scala+"/modelinfo/delete";
+
 
 //rating
 var url_ratinglistangular_scala = address_server_scala+"/rating/getall";
@@ -83,9 +87,10 @@ var url_factorlisbymodelidtangular_scala = address_server_scala+"/modelinfo/view
 var url_factordetailbyfactoridtangular_scala = address_server_scala+"/factor/getbyfactorid";
 var url_factorlistangular_scala = address_server_scala+"/factor/getall";
 var url_factorupdateangular_scala = address_server_scala+"/factor/update";
+var url_factorinsertangular_scala = address_server_scala+"/factor/insert";
 
-
-//model Test
-var url_modelGetAll = address_server_scala+"/modelinfo/getall";
-var url_modelGetAllFactor = address_server_scala+"/modelinfo/view";
-var url_modelGetScore = address_server_scala+"/scoreresult";
+//factoroption
+var url_factoroptiondelete_scala = address_server_scala+"/factor/deleteOption";
+var url_factoroptioninsert_scala = address_server_scala+"/factor/insertOption";
+var url_factoroptionupdate_scala = address_server_scala+"/factor/updateOption";
+var url_factoroptiondetail_scala = address_server_scala+"/factoroption/getbyfactoroptionid";

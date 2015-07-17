@@ -1,13 +1,8 @@
-var factoroption={
-	factorid:'',
-	name:'',
-	description:'',
-	score:'',
-	fatal:'',
-	odinal:'',
-	status:''
-};
 var factoroptions={
-	_id:'',
-	factoroption:factoroption
+	FactorOptionId:'',
+	FactorOptionName:'',
+	Description:'',
+	Fatal:'',
+	Score:0,
+	Status:'1'
 };
