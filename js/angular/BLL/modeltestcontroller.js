@@ -60,7 +60,7 @@ app.controller('modelTestController', function ($scope, $http) {
                 if (data['Status'] == 'Approve') {
                     $scope.messageClass = 'col-md-6 wel bg-success';
 
-                    $scope.message = 'Congratulations! Your loan is approved subject to confirmation of the details you have provided. Check your mail for next steps.'
+                    $scope.message = 'Congratulations! Your loan is approved subject to confirmation of the details you have provided. Check your mail for next steps (Score: ' + data['Score'] +' ,Rating: '+ data['Rating'] + ' ,Status: ' + data['Status'] + ').';
                 }
                 else if (data['Status'] == 'Underwriting'){
                     $scope.messageClass = 'col-md-6 wel bg-warning';
