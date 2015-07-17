@@ -39,6 +39,7 @@ function getmodeldetailangular($scope,$http,url)
         .success(function (data) {
             //alert(data);
             $scope.modeldetail = data["ModelInfosList"][0];
+            $('#modeldetailstatus').show();
         })
 }
 
