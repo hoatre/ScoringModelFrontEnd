@@ -10,6 +10,20 @@ function modellistangular($scope,$http,url)
 		})
 }
 
+function modellistbymodelsatusangular($scope,$http,url)
+{
+	//alert(url);
+	$http.post(url, {status:'draft'}).
+		success(function(data, status, headers, config) {
+			//alert(data);
+			$scope.modelinfos = data["SUCCESS"];
+		}).
+		error(function(data, status, headers, config) {
+			// called asynchronously if an error occurs
+			// or server returns response with an error status.
+		});
+}
+
 function factorlistbymodelidangular($scope,$http)
 {
 	//alert(url_factorlisbymodelidtangular_scala+"-->"+$scope.factordetail.ModelId);

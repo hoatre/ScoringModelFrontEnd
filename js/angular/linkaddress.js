@@ -67,6 +67,7 @@ var url_groupupdate_scala = address_server_scala+"/group/update";
 
 //model
 var url_modellistangular_scala = address_server_scala+"/modelinfo/getall";
+var url_modellisbymodelstatustangular_scala = address_server_scala+"/modelinfo/getbymodelinfostatus";
 var url_modeldetailangular_scala = address_server_scala+"/modelinfo/getbymodelinfoid";
 var url_modelrangerandupdateangular_scala = address_server_scala+"/modelinfo/rangeandupdate";
 var url_modelinsertangular_scala = address_server_scala+"/modelinfo/insert";
