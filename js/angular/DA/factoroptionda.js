@@ -35,6 +35,25 @@ function factorlistangular($scope,$http,url)
 	})
 }
 
+
+function factorlistbymodelidangular($scope,$http,url,modelid)
+{
+	//alert(url);
+	$http.post(url_factoroptionbymodelid_scala, {modelid: modelid}).
+		success(function (data, status, headers, config) {
+			//console.log(data["SUCCESS"]);
+			//alert(data);
+			if(typeof data["ERROR"]=='undefined')
+			{
+				$scope.factors = data["SUCCESS"];
+			}
+		}).
+		error(function (data, status, headers, config) {
+			// called asynchronously if an error occurs
+			// or server returns response with an error status.
+		});
+}
+
 function modelChanged($scope,$http)
 {
 	$scope.modelChanged = function(id) {
@@ -60,6 +79,7 @@ function modelChanged($scope,$http)
 			success(function (data, status, headers, config) {
 				//console.log(data["SUCCESS"]);
 				//alert(data);
+				$scope.factors=[];
 				if(typeof data["ERROR"]=='undefined')
 				{
 					$scope.factors = data["SUCCESS"];
@@ -102,6 +122,11 @@ function getfactoroptiondetailangular($scope,$http,url,factorId,factorOptionId)
 			// or server returns response with an error status.
 		});
 }
+function factoroptionadd($scope,$http) {
+	$scope.factoroptionadd = function() {
+		window.location.assign("/factoroptiondetail.html?modelid=" + $scope.choiceModel);
+	}
+}
 
 function factoroptiondelete($scope,$http,url)
 {
@@ -110,7 +135,15 @@ function factoroptiondelete($scope,$http,url)
 		$http.post(url, {idFactor:factorid,idFactorOption:factoroptionid}).
 		  success(function(data, status, headers, config) {
 			//alert(data);
-			window.location.assign("/factoroptions.html")
+			//window.location.assign("/factoroptions.html")
+				for(var i=0;i<$scope.factoroptions.length;i++)
+				{
+					if($scope.factoroptions[i].FactorOptionId==factoroptionid)
+					{
+						$scope.factoroptions.splice(i, 1);
+					}
+				}
+
 		  }).
 		  error(function(data, status, headers, config) {
 			// called asynchronously if an error occurs
