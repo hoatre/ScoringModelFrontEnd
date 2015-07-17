@@ -36,6 +36,14 @@ function modelChanged($scope,$http)
             {
                 $scope.modelinfodetail=$scope.modelinfos[i];
                 //alert($scope.modelinfodetail.min);
+                if($scope.modelinfodetail.status=='draft')
+                {
+                    $('#btnInsert').show();
+                }
+                else
+                {
+                    $('#btnInsert').hide();
+                }
             }
         }
         //alert(url_ratinglistbymodelidangular_scala+"/"+id);
@@ -107,8 +115,8 @@ function ratingAdd($scope,$http) {
 function ratingdelete($scope,$http,url)
 {
     $scope.ratingdelete = function(index){
-
-        $http.post(url, {id:$scope.ratings[index]._id}).
+        //alert($scope.ratings[index].code);
+        $http.post(url, {modelid:$scope.modelforrating.modelid,code:$scope.ratings[index].code}).
             success(function(data, status, headers, config) {
                 alert(data);
                 window.location.assign("/ratings.html")

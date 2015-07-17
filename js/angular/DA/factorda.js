@@ -52,7 +52,14 @@ function modelChanged($scope,$http)
 			}
 		}
 		//alert(url_ratinglistbymodelidangular_scala+"/"+id);
-
+		if($scope.modelinfodetail.status=='draft')
+		{
+			$('#btnInsert').show();
+		}
+		else
+		{
+			$('#btnInsert').hide();
+		}
 		$http.post(url_factorlisbymodelidtangular_scala, {id:$scope.modelinfodetail._id}).
 			success(function(data, status, headers, config) {
 				//$scope.modelinfodetail = data["SUCCESS"];
@@ -113,8 +120,15 @@ function modelChanged($scope,$http)
 							{
 								text: 'Action', cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false, dataField: null, cellsRenderer: function (row, column, value) {
 								// render custom column.
-								//alert(row);
-								return "<a href='/factordetail.html?id="+row+"'><img src='assets/images/edit.png' height='30px'/></a>";;
+								//alert($scope.modelinfodetail.Status);
+								if($scope.modelinfodetail.status=='draft')
+								{
+									return "<a href='/factordetail.html?id="+row+"'><img src='assets/images/edit.png' height='30px'/></a>";
+								}
+								else
+								{
+									return "";
+								}
 								//+"<a ng-click=\"factordeletree('"+row+"')\" class='btn btn-danger'><i class='fa fa-times icon-only'></i></a>";
 							}
 							}

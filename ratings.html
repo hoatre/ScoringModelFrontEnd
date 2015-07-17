@@ -204,13 +204,15 @@
                         <div id="basic" class="panel-collapse collapse in">
                             <div class="portlet-body no-padding">
                                 <table class="table table-bordered table-hover tc-table">
-                                    <thead>
-                                    <tr>
-                                        <th>Label</th>
-                                        <th class="hidden-xs">Score</th>
-                                    </tr>
-                                    </thead>
                                     <tbody>
+                                    <tr>
+                                        <td class="hidden-xs">
+                                            status
+                                        </td>
+                                        <td class="hidden-xs">
+                                            {{modelinfodetail.status}}
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <td class="hidden-xs">
                                             Minimum Score
@@ -235,7 +237,7 @@
                     <div class="portlet"><!-- /Portlet -->
                         <div class="portlet-heading dark">
                             <div class="portlet-title">
-                                <button type="button" ng-click='ratingAdd()' class="btn btn-primary">Action</button>
+                                <button type="button" id="btnInsert" ng-click='ratingAdd()' class="btn btn-primary" style="display:none">Action</button>
                                 <button type="button" ng-click='ratingCheckRating()' class="btn btn-primary">Check Rating</button>
                             </div>
                             <div class="portlet-widgets">
@@ -273,7 +275,7 @@
                                             {{rating.status}}
                                         </td>
                                         <td class="col-medium center">
-                                            <div class="btn-group btn-group-xs ">
+                                            <div class="btn-group btn-group-xs " ng-show="{{modelinfodetail.status=='draft'?true:false}}">
                                                 <a href="/ratingdetail.html?modelid={{modelforrating.modelid}}&id={{rating.code}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
                                                 <a ng-click='ratingdelete($index)' class="btn btn-danger"><i class="fa fa-times icon-only"></i></a>
                                             </div>

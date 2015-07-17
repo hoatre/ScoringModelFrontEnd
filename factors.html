@@ -207,16 +207,18 @@
 							</div>
 							<div class="clearfix"></div>
 						</div>
-						<div id="basic" class="panel-collapse collapse in">
+						<div class="panel-collapse collapse in">
 							<div class="portlet-body no-padding">
 								<table class="table table-bordered table-hover tc-table">
-									<thead>
-									<tr>
-										<th>Label</th>
-										<th class="hidden-xs">Score</th>
-									</tr>
-									</thead>
 									<tbody>
+									<tr>
+										<td class="hidden-xs">
+											Status
+										</td>
+										<td class="hidden-xs">
+											{{modelinfodetail.status}}
+										</td>
+									</tr>
 									<tr>
 										<td class="hidden-xs">
 											Minimum Score
@@ -242,7 +244,7 @@
 					<div class="portlet"><!-- /Portlet -->
 						<div class="portlet-heading dark">
 							<div class="portlet-title">
-								<button type="button" onclick="factordetail()" class="btn btn-primary">Add</button>
+								<button id="btnInsert" type="button" onclick="factordetail()" class="btn btn-primary" style="display:none">Add</button>
 							</div>
 							<div class="portlet-widgets">
 								<a data-toggle="collapse" data-parent="#accordion" href="#basic"><i class="fa fa-chevron-down"></i></a>

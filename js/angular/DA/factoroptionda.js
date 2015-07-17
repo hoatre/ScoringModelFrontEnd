@@ -25,7 +25,7 @@ function modelChanged($scope,$http)
 {
 	$scope.modelChanged = function(id) {
 		//alert(id);
-		$http.post(url_factorlisbymodelidtangular_scala, {id: id}).
+		$http.post(url_factoroptionbymodelid_scala, {modelid: id}).
 			success(function (data, status, headers, config) {
 				//console.log(data["SUCCESS"]);
 				//alert(data);
@@ -45,6 +45,7 @@ function factorChanged($scope,$http,url)
 		{
 			if($scope.factors[i]._id==id)
 			{
+				//alert($scope.factors[i]["FactorOption"][0].FactorOptionName);
 				$scope.factoroptions = $scope.factors[i]["FactorOption"];
 			}
 		}
