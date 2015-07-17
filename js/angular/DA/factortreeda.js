@@ -11,6 +11,8 @@ function factorlistangular($scope,$http,url)
             //alert(data);
             //$scope.factorlist = data;
             var factortreelist=[];
+            var factortreedropdownlist=[];
+
             for(var i=0;i<data.length;i++)
             {
                 var factortree = {
@@ -22,6 +24,12 @@ function factorlistangular($scope,$http,url)
                     "status":data[i].factor.status
                 };
                 factortreelist.push(factortree);
+                var factortreedropdown={ "id": data[i]._id,
+                    "parentid": data[i].factor.parentid,
+                    "text": data[i].factor.name,
+                    "value": data[i]._id
+                }
+                factortreedropdownlist.push(factortreedropdown);
             }
             //alert(factortreelist.length);
 
@@ -73,7 +81,48 @@ function factorlistangular($scope,$http,url)
                         { text: 'Name', name: 'Name' }
                     ]
             });
+
+        loaddropdowntree([]);
     })
+}
+
+function loaddropdowntree(factortreedropdown)
+{
+    $("#dropDownButton").jqxDropDownButton({ width: 200, height: 25 });
+
+    $('#jqxTree').on('select', function (event) {
+        var args = event.args;
+        var item = $('#jqxTree').jqxTree('getItem', args.element);
+        alert(item.value);
+        var dropDownContent = '<div style="position: relative; margin-left: 3px; margin-top: 5px;">' + item.label + '</div>';
+        $("#dropDownButton").jqxDropDownButton('setContent', dropDownContent);
+    });
+
+
+
+    // prepare the data
+    var source =
+    {
+        datatype: "json",
+        datafields: [
+            { name: 'id' },
+            { name: 'parentid' },
+            { name: 'text' },
+            { name: 'value' }
+        ],
+        id: 'id',
+        localdata: factortreedropdown
+    };
+
+    // create data adapter.
+    var dataAdapter = new $.jqx.dataAdapter(source);
+    // perform Data Binding.
+    dataAdapter.dataBind();
+    // get the tree items. The first parameter is the item's id. The second parameter is the parent item's id. The 'items' parameter represents
+    // the sub items collection name. Each jqxTree item has a 'label' property, but in the JSON data, we have a 'text' field. The last parameter
+    // specifies the mapping between the 'text' and 'label' fields.
+    var records = dataAdapter.getRecordsHierarchy('id', 'parentid', 'items', [{ name: 'text', map: 'label'}]);
+    $('#jqxTree').jqxTree({ source: records, width: '300px' });
 }
 
 function factordeletree(id)
