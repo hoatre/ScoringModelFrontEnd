@@ -220,7 +220,7 @@
 										<label class="col-sm-3 control-label">Model:</label>
 										<div class="col-sm-5">
 											<div class="clearfix">
-												<select id="cboModel" style="width:200px"  name="cboModel" ng-model="factordetail.ModelId" ng-options="modelinfo._id as modelinfo.name for modelinfo in modelinfos" ng-change="modeldetailChanged(factordetail.ModelId)">
+												<select id="cboModel" style="width:200px"  name="cboModel" ng-model="factordetail.ModelId" ng-options="modelinfo._id as modelinfo.name for modelinfo in modelinfos" ng-change="modeldetailChanged(factordetail.ModelId)" required>
 													<option value="">Please select</option>
 												</select>
 											</div>

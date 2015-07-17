@@ -218,6 +218,7 @@ function actionfactordetailangular($scope,$http)
 {
 	$scope.save = function(){
 		if(!$scope.formFactor.$valid) {
+			//alert("Form valid!");
 			return;
 		}
 		//alert(url);

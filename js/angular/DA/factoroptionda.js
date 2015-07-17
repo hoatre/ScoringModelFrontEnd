@@ -124,7 +124,7 @@ function actionfactoroptiondetailangular($scope,$http)
 	//alert($scope.groups._id
 	$scope.save = function(){
 		if(!$scope.formFartorOption.$valid) {
-			alert("Form valid!");
+			//alert("Form valid!");
 			return;
 		}
 		var factoroptions={};

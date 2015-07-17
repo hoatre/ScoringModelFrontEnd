@@ -49,6 +49,7 @@ function actionmodeldetailangular($scope,$http)
         //alert(url);
         var url="";
         if(!$scope.formModel.$valid) {
+            //alert("Form valid!");
             return;
         }
         var models={};
