@@ -23,6 +23,10 @@ function modellistangular($scope,$http,url)
         .success(function (data) {
             //alert(data);
             $scope.modelinfos = data["ModelInfosList"];
+            if($scope.choiceModel!='')
+            {
+                backmodelChanged($scope,$http,$scope.choiceModel);
+            }
         })
 }
 
@@ -72,6 +76,53 @@ function modelChanged($scope,$http)
 
         })
     }
+}
+
+function backmodelChanged($scope,$http,modelid)
+{
+        //alert($scope.modelinfos);
+        for(var i=0;i<$scope.modelinfos.length;i++)
+        {
+            if($scope.modelinfos[i]._id==modelid)
+            {
+                $scope.modelinfodetail=$scope.modelinfos[i];
+                //alert($scope.modelinfodetail.min);
+                if($scope.modelinfodetail.status=='draft')
+                {
+                    $('#btnInsert').show();
+                }
+                else
+                {
+                    $('#btnInsert').hide();
+                }
+            }
+        }
+        //alert(url_ratinglistbymodelidangular_scala+"/"+id);
+        $http.get(url_ratinglistbymodelidangular_scala+"/"+modelid)
+            .success(function (data) {
+                //alert(data);
+                /*data["SUCCESS"][0]["codein"].sort(function(a, b){
+                 return a.rating.scorefrom-b.rating.scorefrom;
+                 })
+                 $scope.ratings = data;*/
+                //alert(data["SUCCESS"][0]["codein"].code)
+
+                //$scope.ratings =ratings;
+                //alert(data["ERROR"]);
+                if(typeof data["ERROR"]=='undefined')
+                {
+                    $scope.modelforrating = data["SUCCESS"][0];
+                    $scope.ratings = data["SUCCESS"][0]["codein"];
+                }
+                else
+                {
+                    //alert('AA');
+                    $scope.modelforrating=[];
+                    $scope.ratings=[];
+                }
+
+            })
+
 }
 
 function ratingCheckRating($scope,$http)
@@ -177,7 +228,9 @@ function actionratingdetailangular($scope,$http,modelid)
         {
             $http.post(url, angular.toJson(ratingobj)).
             success(function(data, status, headers, config) {
-                window.location.assign("/ratings.html")
+               // window.location.assign("/ratings.html")
+                    window.location.assign("/ratings.html?modelid="+$scope.modeldetail._id);
+
             }).
             error(function(data, status, headers, config) {
                 // called asynchronously if an error occurs

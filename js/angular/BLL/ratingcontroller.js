@@ -2,9 +2,11 @@
  * Created by quang on 7/12/2015.
  */
 
-app.controller('ratinglistController', function ($scope, $http) {
+app.controller('ratinglistController', function ($scope, $http,$location) {
     //alert(url_ratinglistangular);
     $scope.choiceModel = '';
+    var modelid=geturlvaluehtml($location.absUrl(),"modelid");
+    $scope.choiceModel = modelid;
     modellistangular($scope,$http,url_modellistangular_scala);
     ratinglistangular($scope,$http,url_ratinglistangular_scala);
     ratingdelete($scope,$http,url_ratingdelete_scala);
