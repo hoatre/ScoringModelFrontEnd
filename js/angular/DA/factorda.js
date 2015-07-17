@@ -190,7 +190,7 @@ function factordelete($scope,$http,url)
 		//alert(index);
 		$http.post(url, {id:$scope.factors[index]._id}).
 		  success(function(data, status, headers, config) {
-			alert(data);
+			//alert(data);
 			window.location.assign("/factors.html")
 		  }).
 		  error(function(data, status, headers, config) {

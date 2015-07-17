@@ -95,8 +95,8 @@ function factoroptiondelete($scope,$http,url)
 			//alert(factorid+":"+factoroptionid);
 		$http.post(url, {idFactor:factorid,idFactorOption:factoroptionid}).
 		  success(function(data, status, headers, config) {
-			alert(data);
-			//window.location.assign("/factoroptions.html")
+			//alert(data);
+			window.location.assign("/factoroptions.html")
 		  }).
 		  error(function(data, status, headers, config) {
 			// called asynchronously if an error occurs
@@ -118,7 +118,7 @@ function actionfactoroptiondetailangular($scope,$http)
 		if(typeof $scope.factoroptiondetail.FactorOptionId == 'undefined'||$scope.factoroptiondetail.FactorOptionId =='')
 		{
 			url=url_factoroptioninsert_scala;
-			alert(url);
+			//alert(url);
 			factoroptions={
 				FactorId:$scope.choiceFactor,
 				FactorOptionName : $scope.factoroptiondetail.FactorOptionName,
@@ -132,7 +132,7 @@ function actionfactoroptiondetailangular($scope,$http)
 		else
 		{
 			url=url_factoroptionupdate_scala;
-			alert(url);
+			//alert(url);
 			factoroptions={
 				idFactor:$scope.choiceFactor,
 				idFactorOption:$scope.factoroptiondetail.FactorOptionId,

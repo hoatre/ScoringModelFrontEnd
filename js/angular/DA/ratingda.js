@@ -118,7 +118,7 @@ function ratingdelete($scope,$http,url)
         //alert($scope.ratings[index].code);
         $http.post(url, {modelid:$scope.modelforrating.modelid,code:$scope.ratings[index].code}).
             success(function(data, status, headers, config) {
-                alert(data);
+                //alert(data);
                 window.location.assign("/ratings.html")
             }).
             error(function(data, status, headers, config) {
