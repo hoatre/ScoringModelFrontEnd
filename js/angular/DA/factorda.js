@@ -28,10 +28,10 @@ function modellistbymodelsatusangular($scope,$http,url)
 		});
 }
 
-function factorlistbymodelidangular($scope,$http)
+function factorlistbymodelidangular($scope,$http,modelid)
 {
 	//alert(url_factorlisbymodelidtangular_scala+"-->"+$scope.factordetail.ModelId);
-	$http.post(url_factorlisbymodelidtangular_scala, {id: $scope.factordetail.ModelId}).
+	$http.post(url_factorlisbymodelidtangular_scala, {id: modelid}).
 		success(function (data, status, headers, config) {
 			$scope.factors = data["SUCCESS"];
 		}).
@@ -155,7 +155,7 @@ function modelChanged($scope,$http)
 								//alert($scope.modelinfodetail.Status);
 								if($scope.modelinfodetail.status=='draft')
 								{
-									return "<a href='/factordetail.html?id="+row+"'><img src='assets/images/edit.png' height='30px'/></a>";
+									return "<a href='/factordetail.html?modelid="+$scope.modelinfodetail._id+"&id="+row+"'><img src='assets/images/edit.png' height='30px'/></a>";
 								}
 								else
 								{
@@ -261,7 +261,7 @@ function backmodelChanged($scope,$http,modelid)
 							//alert($scope.modelinfodetail.Status);
 							if($scope.modelinfodetail.status=='draft')
 							{
-								return "<a href='/factordetail.html?id="+row+"'><img src='assets/images/edit.png' height='30px'/></a>";
+								return "<a href='/factordetail.html?modelid="+$scope.modelinfodetail._id+"&id="+row+"'><img src='assets/images/edit.png' height='30px'/></a>";
 							}
 							else
 							{
@@ -313,7 +313,7 @@ function getfactordetailangular($scope,$http,url,id)
 			//alert(data["FactorsList"][0].FactorName);
 			$scope.factordetail = data["FactorsList"][0];
 			//alert($scope.factordetail.name+"-->"+$scope.factordetail.min);
-			factorlistbymodelidangular($scope,$http);
+			//factorlistbymodelidangular($scope,$http);
 		}).
 		error(function(data, status, headers, config) {
 			// called asynchronously if an error occurs
