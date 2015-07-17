@@ -7,5 +7,5 @@ var modelinfos={
     description:'',
     maxscore: 0,
     minscore:0,
-    status:'DeActive'
+    status:'draft'
 };
