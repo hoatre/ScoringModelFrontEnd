@@ -223,9 +223,9 @@
                                             {{modelinfo.status}}
                                         </td>
                                         <td class="col-medium center">
-                                            <div class="btn-group btn-group-xs ">
+                                            <div class="btn-group btn-group-xs " ng-show="{{modelinfo.status=='publish'?false:true}}">
                                                 <a href="/modeldetail.html?id={{modelinfo._id}}" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
-                                                <a ng-click='modeldelete($index)' class="btn btn-danger"><i class="fa fa-times icon-only"></i></a>
+                                                <a ng-click='modeldelete($index)' class="btn btn-danger" ng-show="{{modelinfo.status=='draft'?true:false}}"><i class="fa fa-times icon-only"></i></a>
                                             </div>
                                         </td>
                                     </tr>
