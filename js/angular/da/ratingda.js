@@ -157,6 +157,14 @@ function gennerateScoringRange($scope,$http)
     }
 }
 
+function validatemodel($scope,$http)
+{
+    $scope.validatemodel = function(){
+        //alert('aaa');
+        checkweightrate($scope,$http,$scope.choiceModel);
+    }
+}
+
 function ratingAdd($scope,$http) {
     $scope.ratingAdd = function(){
         window.location.assign("/ratingdetail.html?modelid="+$scope.modelinfodetail._id);

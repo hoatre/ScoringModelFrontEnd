@@ -14,6 +14,7 @@ app.controller('ratinglistController', function ($scope, $http,$location) {
     ratingCheckRating($scope,$http);
     gennerateScoringRange($scope,$http);
     ratingAdd($scope,$http);
+    validatemodel($scope,$http);
 }).controller('ratinglistAction', function ($scope, $http) {
     //modulecheckroleaction($scope,$http,'/ratinglist');
 }).controller('ratingDetailController', function ($scope, $http,$location) {
