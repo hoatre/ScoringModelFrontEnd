@@ -163,6 +163,14 @@ function factorChanged($scope,$http)
    }
 }
 
+function validatemodel($scope,$http)
+{
+	$scope.validatemodel = function(){
+		//alert('aaa');
+		checkweightrate($scope,$http,$scope.choiceModel);
+	}
+}
+
 function getfactoroptiondetailangular($scope,$http,url,factorId,factorOptionId)
 {
 	//alert(factorId)
