@@ -2,38 +2,61 @@
  * Created by quang on 7/18/2015.
  */
 //khai bao bien dinh nghia valid message
-function returnmessage(code)
-{
-    var err='';
-    switch (code) {
-        case '0':
-            err = "SUSSCESS";
-            break;
-        case '1':
-            err = "Weight and Rate have problems";
-            break;
-        case '2':
-            err = "Weight have problems";
-            break;
-        case '3':
-            err = "Rate have problems";
-            break;
-    }
-    return err;
-}
+
 
 function checkweightrate($scope,$http,modelid)
 {
-    $http.get(url_checkweightrate_scala+"/"+modelid)
-    .success(function (data) {
-            if(data.checkweightrate.header.code==0)
+    $http.post(url_checkweightrate_scala, {modelid:modelid}).
+        success(function(data, status, headers, config) {
+            //alert('data.checkweightrate.header.code');
+            var code =0;
+            code=data.checkweightrate.header.code;
+            var strerr="";
+            if(code==0)
             {
+
+                alert(data["checkweightrate"]["header"].message);
                 return true;
             }
-            else
+            else if(code==1)
             {
-                alert(returnmessage(data.checkweightrate.header.code));
+                strerr = data["checkweightrate"]["header"].message+":\n";
+                for(var i=0;i<data["checkweightrate"]["body"]["weight"].length;i++)
+                {
+                    strerr+="- "+data["checkweightrate"]["body"]["weight"][i].FactorName+" : "+data["checkweightrate"]["body"]["weight"][i].Weight+"\n";
+                }
+                strerr += "------------------------------------------\n";
+                strerr += "- "+data["checkweightrate"]["body"].rate;
+                alert(strerr);
                 return false;
             }
-    })
+            else if(code==2)
+            {
+                strerr = data["checkweightrate"]["header"].message+":\n";
+                for(var i=0;i<data["checkweightrate"]["body"]["weight"].length;i++)
+                {
+                    strerr+="- "+data["checkweightrate"]["body"]["weight"][i].FactorName+" : "+data["checkweightrate"]["body"]["weight"][i].Weight+"\n";
+                }
+                alert(strerr);
+                return false;
+            }
+            else if(code==3)
+            {
+                strerr = data["checkweightrate"]["header"].message+":\n";
+                strerr += "- "+data["checkweightrate"]["body"].rate;
+                alert(strerr);
+                return false;
+            }
+            else if(code==4)
+            {
+                strerr = data["checkweightrate"]["header"].message+":\n";
+                alert(strerr);
+                return false;
+            }
+        }).
+        error(function(data, status, headers, config) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+
 }

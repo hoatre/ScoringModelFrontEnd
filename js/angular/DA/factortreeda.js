@@ -82,7 +82,7 @@ function factorlistangular($scope,$http,url)
                     ]
             });
 
-        loaddropdowntree([]);
+        loaddropdowntree(factortreedropdownlist);
     })
 }
 

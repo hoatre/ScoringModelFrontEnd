@@ -285,7 +285,7 @@ function backmodelChanged($scope,$http,modelid)
 
 function gennerateScoringRange($scope,$http)
 {
-	$scope.gennerateScoringRange = function(index){
+	$scope.gennerateScoringRange = function(){
 		//alert(url_modelrangerandupdateangular_scala);
 		$http.post(url_modelrangerandupdateangular_scala, {id:$scope.modelinfodetail._id}).
 			success(function(data, status, headers, config) {
@@ -300,7 +300,13 @@ function gennerateScoringRange($scope,$http)
 	}
 }
 
-
+function validatemodel($scope,$http)
+{
+	$scope.validatemodel = function(){
+		//alert('aaa');
+		checkweightrate($scope,$http,$scope.choiceModel);
+	}
+}
 //load form list modellist
 
 
