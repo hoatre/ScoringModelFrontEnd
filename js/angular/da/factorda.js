@@ -106,7 +106,7 @@ function modelChanged($scope,$http)
 							"parentid": data["SUCCESS"][i].Parentid,
 							"name": data["SUCCESS"][i].FactorName,
 							"description":data["SUCCESS"][i].Description,
-							"weight":data["SUCCESS"][i].Weight,
+							"weight":data["SUCCESS"][i].Weight+"%",
 							"status":data["SUCCESS"][i].Status
 						};
 						factortreelist.push(factortree);
@@ -212,7 +212,7 @@ function backmodelChanged($scope,$http,modelid)
 						"parentid": data["SUCCESS"][i].Parentid,
 						"name": data["SUCCESS"][i].FactorName,
 						"description":data["SUCCESS"][i].Description,
-						"weight":data["SUCCESS"][i].Weight,
+						"weight":data["SUCCESS"][i].Weight+"%",
 						"status":data["SUCCESS"][i].Status
 					};
 					factortreelist.push(factortree);

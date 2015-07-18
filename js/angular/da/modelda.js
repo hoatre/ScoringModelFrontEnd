@@ -53,6 +53,7 @@ function actionmodeldetailangular($scope,$http)
             return;
         }
         var models={};
+        var action=true;
         if(typeof $scope.modeldetail == 'undefined'||$scope.modeldetail._id =='')
         {
             //alert(url_modelinsertangular_scala);
@@ -73,8 +74,14 @@ function actionmodeldetailangular($scope,$http)
                 status:$scope.modeldetail.status
             };
             url = url_modelupdateangular_scala;
+            if($scope.modeldetail.status!='draft')
+            {
+                action=checkweightrate($scope,$http,$scope.modeldetail._id);
+            }
         }
-        $http.post(url, angular.toJson(models)).
+        if(action)
+        {
+            $http.post(url, angular.toJson(models)).
             success(function(data, status, headers, config) {
                 window.location.assign("/model.html")
             }).
@@ -82,5 +89,6 @@ function actionmodeldetailangular($scope,$http)
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
             });
+        }
     }
 }
