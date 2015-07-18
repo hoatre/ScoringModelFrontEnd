@@ -26,7 +26,6 @@
         };
 
         $scope.getModelByStatus = function(status){
-
             $http.post(url_modelGetByStatus, {status:status}).
                 success(function(data, status, headers, config) {
                     console.log(data);
