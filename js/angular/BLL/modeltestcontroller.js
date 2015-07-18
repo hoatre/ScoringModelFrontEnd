@@ -25,6 +25,21 @@
                 });
         };
 
+        $scope.getModelByStatus = function(status){
+
+            $http.post(url_modelGetByStatus, {status:status}).
+                success(function(data, status, headers, config) {
+                    console.log(data);
+                    $scope.models = data['SUCCESS'];
+                })
+                .error(function(error, status, headers, config) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                    $scope.message = error;
+                    $scope.factors = [];
+                });
+        };
+
         $scope.getFactorByModelId = function(modelId){
 
             $http.post(url_modelGetAllFactor, {id:modelId}).
@@ -148,6 +163,6 @@
         };
 
 
-        $scope.getAllModels();
+        //$scope.getAllModels();
     });
 }());

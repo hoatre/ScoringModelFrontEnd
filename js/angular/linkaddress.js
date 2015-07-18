@@ -99,6 +99,7 @@ var url_factoroptionbymodelid_scala = address_server_scala+"/factoroption/getbym
 
 //model Test
 var url_modelGetAll = address_server_scala+"/modelinfo/getall";
+var url_modelGetByStatus = address_server_scala+"/modelinfo/getbymodelinfostatus";
 var url_modelGetAllFactor = address_server_scala+"/modelinfo/view";
 var url_modelGetScore = address_server_scala+"/scoreresult";
 
