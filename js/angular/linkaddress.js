@@ -89,6 +89,7 @@ var url_factordetailbyfactoridtangular_scala = address_server_scala+"/factor/get
 var url_factorlistangular_scala = address_server_scala+"/factor/getall";
 var url_factorupdateangular_scala = address_server_scala+"/factor/update";
 var url_factorinsertangular_scala = address_server_scala+"/factor/insert";
+var url_factordeletetangular_scala = address_server_scala+"/factor/delete";
 
 //factoroption
 var url_factoroptiondelete_scala = address_server_scala+"/factor/deleteOption";

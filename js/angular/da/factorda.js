@@ -145,6 +145,24 @@ function modelChanged($scope,$http)
 						{
 							$("#treeGrid").jqxTreeGrid('expandRow', '2');
 						},
+						rendered: function () {
+							$(".deleteButtons").click(function (event) {
+								// end edit and cancel changes.
+								var rowKey = event.target.getAttribute('data-row');
+								$http.post(url_factordeletetangular_scala, {id:rowKey}).
+									success(function(data, status, headers, config) {
+										$("#treeGrid").jqxTreeGrid('deleteRow', rowKey);
+										//alert(data);
+										//window.location.assign("/factors.html")
+										//$scope.factors.splice(index, 1);
+									}).
+									error(function(data, status, headers, config) {
+										// called asynchronously if an error occurs
+										// or server returns response with an error status.
+									});
+							});
+
+						},
 						columns: [
 							{ text: 'Name', columnGroup: 'name', dataField: 'name', width: 500},
 							{ text: 'Description', dataField: 'description'},
@@ -155,13 +173,13 @@ function modelChanged($scope,$http)
 								//alert($scope.modelinfodetail.Status);
 								if($scope.modelinfodetail.status=='draft')
 								{
-									return "<a href='/factordetail.html?modelid="+$scope.modelinfodetail._id+"&id="+row+"'><img src='assets/images/edit.png' height='30px'/></a>";
+									return "<a href='/factordetail.html?modelid="+$scope.modelinfodetail._id+"&id="+row+"'>edit</a>|"
+										+"<a  data-row='" + row + "' class='deleteButtons'>delete</a>";
 								}
 								else
 								{
 									return "";
 								}
-								//+"<a ng-click=\"factordeletree('"+row+"')\" class='btn btn-danger'><i class='fa fa-times icon-only'></i></a>";
 							}
 							}
 						],
@@ -251,6 +269,24 @@ function backmodelChanged($scope,$http,modelid)
 					{
 						$("#treeGrid").jqxTreeGrid('expandRow', '2');
 					},
+					rendered: function () {
+						$(".deleteButtons").click(function (event) {
+							// end edit and cancel changes.
+							var rowKey = event.target.getAttribute('data-row');
+							$http.post(url_factordeletetangular_scala, {id:rowKey}).
+								success(function(data, status, headers, config) {
+									$("#treeGrid").jqxTreeGrid('deleteRow', rowKey);
+									//alert(data);
+									//window.location.assign("/factors.html")
+									//$scope.factors.splice(index, 1);
+								}).
+								error(function(data, status, headers, config) {
+									// called asynchronously if an error occurs
+									// or server returns response with an error status.
+								});
+						});
+
+					},
 					columns: [
 						{ text: 'Name', columnGroup: 'name', dataField: 'name', width: 500},
 						{ text: 'Description', dataField: 'description'},
@@ -261,13 +297,14 @@ function backmodelChanged($scope,$http,modelid)
 							//alert($scope.modelinfodetail.Status);
 							if($scope.modelinfodetail.status=='draft')
 							{
-								return "<a href='/factordetail.html?modelid="+$scope.modelinfodetail._id+"&id="+row+"'><img src='assets/images/edit.png' height='30px'/></a>";
+								return "<a href='/factordetail.html?modelid="+$scope.modelinfodetail._id+"&id="+row+"'>edit</a>|"
+									+"<a  data-row='" + row + "' class='deleteButtons'>delete</a>";
 							}
 							else
 							{
 								return "";
 							}
-							//+"<a ng-click=\"factordeletree('"+row+"')\" class='btn btn-danger'><i class='fa fa-times icon-only'></i></a>";
+
 						}
 						}
 					],
@@ -307,6 +344,14 @@ function validatemodel($scope,$http)
 		checkweightrate($scope,$http,$scope.choiceModel);
 	}
 }
+
+function factordeletree($scope,$http)
+{
+	$scope.factordeletree = function(id){
+		alert(id);
+	}
+}
+
 //load form list modellist
 
 
