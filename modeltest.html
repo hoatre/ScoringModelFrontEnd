@@ -248,6 +248,17 @@
                                                 </ul>
                                             </li>
                                         </ul>
+                                        <ul class="nav nav-tree collapse in" id="sub-menu2{{factor2._id}}" ng-show="factor2['FactorOption'].length > 0">
+                                            <li ng-repeat="factorOption in factor2['FactorOption']">
+                                                <label class="col-sm-10">
+                                                    <input type="radio" name="{{factor2._id}}"
+                                                           id="{{factorOption.FactorOptionId}}"
+                                                           value='{"factorid": "{{factor2._id}}", "factoroptionid": "{{factorOption.FactorOptionId}}", "factorname": "", "score": "{{factorOption.Score}}"}' class="tc">
+                                                    <span class="col-sm-9 labels"> {{factorOption.FactorOptionName}}</span>
+                                                    <span class="col-sm-3">Score: {{factorOption.Score}}</span>
+                                                </label>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>

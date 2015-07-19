@@ -231,6 +231,12 @@
                                                 </ul>
                                             </li>
                                         </ul>
+                                        <ul class="nav nav-tree collapse in" id="sub-menu3{{factor2._id}}" ng-show="factor2['FactorOption'].length > 0">
+                                            <li class="col-sm-8" ng-repeat="factorOption in factor2['FactorOption']">
+                                                <span class="col-sm-9"> {{factorOption.FactorOptionName}}</span>
+                                                <span class="col-sm-3">Score: {{factorOption.Score}}</span>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>
