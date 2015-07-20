@@ -63,6 +63,14 @@ function actionmodeldetailangular($scope,$http)
                 status:$scope.modeldetail.status
             };
             url = url_modelinsertangular_scala;
+            $http.post(url, angular.toJson(models)).
+                success(function(data, status, headers, config) {
+                    window.location.assign("/model.html")
+                }).
+                error(function(data, status, headers, config) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                });
             //alert(models.name);
         }
         else
@@ -76,10 +84,85 @@ function actionmodeldetailangular($scope,$http)
             url = url_modelupdateangular_scala;
             if($scope.modeldetail.status!='draft')
             {
-                action=checkweightrate($scope,$http,$scope.modeldetail._id);
+                $http.post(url_checkweightrate_scala, {modelid:$scope.modeldetail._id}).
+                    success(function(data, status, headers, config) {
+                        //alert('data.checkweightrate.header.code');
+                        var code =0;
+                        code=data.checkweightrate.header.code;
+                        var strerr="";
+                        if(code==0)
+                        {
+                            //alert(data["checkweightrate"]["header"].message);
+                            //$scope.statuscheck = true;
+
+                            $http.post(url, angular.toJson(models)).
+                                success(function(data, status, headers, config) {
+                                    window.location.assign("/model.html")
+                                }).
+                                error(function(data, status, headers, config) {
+                                    // called asynchronously if an error occurs
+                                    // or server returns response with an error status.
+                                });
+
+                        }
+                        else if(code==1)
+                        {
+                            strerr = data["checkweightrate"]["header"].message+":\n";
+                            for(var i=0;i<data["checkweightrate"]["body"]["weight"].length;i++)
+                            {
+                                strerr+="- "+data["checkweightrate"]["body"]["weight"][i].FactorName+" : "+data["checkweightrate"]["body"]["weight"][i].Weight+"\n";
+                            }
+                            strerr += "------------------------------------------\n";
+                            strerr += "- "+data["checkweightrate"]["body"].rate;
+                            alert(strerr);
+                            //$scope.statuscheck = false;
+                        }
+                        else if(code==2)
+                        {
+                            strerr = data["checkweightrate"]["header"].message+":\n";
+                            for(var i=0;i<data["checkweightrate"]["body"]["weight"].length;i++)
+                            {
+                                strerr+="- "+data["checkweightrate"]["body"]["weight"][i].FactorName+" : "+data["checkweightrate"]["body"]["weight"][i].Weight+"\n";
+                            }
+                            alert(strerr);
+                            //$scope.statuscheck = false;
+                        }
+                        else if(code==3)
+                        {
+                            strerr = data["checkweightrate"]["header"].message+":\n";
+                            strerr += "- "+data["checkweightrate"]["body"].rate;
+                            alert(strerr);
+                            //$scope.statuscheck = false;
+                        }
+                        else if(code==4)
+                        {
+                            strerr = data["checkweightrate"]["header"].message+":\n";
+                            alert(strerr);
+                            //$scope.statuscheck = false;
+                        }
+                        //alert($scope.statuscheck)
+                    }).
+                    error(function(data, status, headers, config) {
+                        // called asynchronously if an error occurs
+                        // or server returns response with an error status.
+                        //$scope.statuscheck = false
+                    });
+                //alert(checkweightrate($scope,$http,$scope.modeldetail._id));
+            }
+            else
+            {
+                $http.post(url, angular.toJson(models)).
+                    success(function(data, status, headers, config) {
+                        window.location.assign("/model.html")
+                    }).
+                    error(function(data, status, headers, config) {
+                        // called asynchronously if an error occurs
+                        // or server returns response with an error status.
+                    });
             }
         }
-        if(action)
+        //alert($scope.statuscheck)
+        /*if($scope.statuscheck)
         {
             $http.post(url, angular.toJson(models)).
             success(function(data, status, headers, config) {
@@ -89,6 +172,6 @@ function actionmodeldetailangular($scope,$http)
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
             });
-        }
+        }*/
     }
 }
