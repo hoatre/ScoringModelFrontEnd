@@ -271,7 +271,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="rating in ratings">
+                                <tr ng-repeat="rating in ratings | orderBy:'scorefrom'">
                                     <td class="hidden-xs">
                                         {{rating.code}}
                                     </td>
