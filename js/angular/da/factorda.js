@@ -87,10 +87,23 @@ function modelChanged($scope,$http)
 		if($scope.modelinfodetail.status=='draft')
 		{
 			$('#btnInsert').show();
+
+			$('#btnGennerateScoringRange').show();
+			$('#btnValidateModel').show();
+			//$('#btnCheckRating').show();
 		}
 		else
 		{
 			$('#btnInsert').hide();
+			$('#btnGennerateScoringRange').show();
+			$('#btnValidateModel').show();
+			//$('#btnCheckRating').show();
+			if($scope.modelinfodetail.status=="publish")
+			{
+				$('#btnGennerateScoringRange').hide();
+				$('#btnValidateModel').hide();
+				//$('#btnCheckRating').hide();
+			}
 		}
 		$http.post(url_factorlisbymodelidtangular_scala, {id:$scope.modelinfodetail._id}).
 			success(function(data, status, headers, config) {
@@ -151,7 +164,14 @@ function modelChanged($scope,$http)
 								var rowKey = event.target.getAttribute('data-row');
 								$http.post(url_factordeletetangular_scala, {id:rowKey}).
 									success(function(data, status, headers, config) {
-										$("#treeGrid").jqxTreeGrid('deleteRow', rowKey);
+										if(typeof data["ERROR"]=='undefined')
+										{
+											$("#treeGrid").jqxTreeGrid('deleteRow', rowKey);
+										}
+										else
+										{
+											alert(data["ERROR"]);
+										}
 										//alert(data);
 										//window.location.assign("/factors.html")
 										//$scope.factors.splice(index, 1);
@@ -211,10 +231,23 @@ function backmodelChanged($scope,$http,modelid)
 	if($scope.modelinfodetail.status=='draft')
 	{
 		$('#btnInsert').show();
+
+		$('#btnGennerateScoringRange').show();
+		$('#btnValidateModel').show();
+		//$('#btnCheckRating').show();
 	}
 	else
 	{
 		$('#btnInsert').hide();
+		$('#btnGennerateScoringRange').show();
+		$('#btnValidateModel').show();
+		//$('#btnCheckRating').show();
+		if($scope.modelinfodetail.status=="publish")
+		{
+			$('#btnGennerateScoringRange').hide();
+			$('#btnValidateModel').hide();
+			//$('#btnCheckRating').hide();
+		}
 	}
 	$http.post(url_factorlisbymodelidtangular_scala, {id:$scope.modelinfodetail._id}).
 		success(function(data, status, headers, config) {
@@ -275,8 +308,14 @@ function backmodelChanged($scope,$http,modelid)
 							var rowKey = event.target.getAttribute('data-row');
 							$http.post(url_factordeletetangular_scala, {id:rowKey}).
 								success(function(data, status, headers, config) {
-									$("#treeGrid").jqxTreeGrid('deleteRow', rowKey);
-									//alert(data);
+									if(typeof data["ERROR"]=='undefined')
+									{
+										$("#treeGrid").jqxTreeGrid('deleteRow', rowKey);
+									}
+									else
+									{
+										alert(data["ERROR"]);
+									}
 									//window.location.assign("/factors.html")
 									//$scope.factors.splice(index, 1);
 								}).
