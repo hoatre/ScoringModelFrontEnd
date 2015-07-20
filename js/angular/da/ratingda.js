@@ -43,10 +43,23 @@ function modelChanged($scope,$http)
                 if($scope.modelinfodetail.status=='draft')
                 {
                     $('#btnInsert').show();
+
+                    $('#btnGennerateScoringRange').show();
+                    $('#btnValidateModel').show();
+                    $('#btnCheckRating').show();
                 }
                 else
                 {
                     $('#btnInsert').hide();
+                    $('#btnGennerateScoringRange').show();
+                    $('#btnValidateModel').show();
+                    $('#btnCheckRating').show();
+                    if($scope.modelinfodetail.status=="publish")
+                    {
+                        $('#btnGennerateScoringRange').hide();
+                        $('#btnValidateModel').hide();
+                        $('#btnCheckRating').hide();
+                    }
                 }
             }
         }
@@ -65,7 +78,9 @@ function modelChanged($scope,$http)
                 if(typeof data["ERROR"]=='undefined')
                 {
                     $scope.modelforrating = data["SUCCESS"][0];
-                    $scope.ratings = data["SUCCESS"][0]["codein"];
+                    $scope.ratings = data["SUCCESS"][0]["codein"].sort(function(a, b){
+                        return a.scorefrom-b.scorefrom;
+                    });
                 }
                 else
                 {
@@ -90,10 +105,23 @@ function backmodelChanged($scope,$http,modelid)
                 if($scope.modelinfodetail.status=='draft')
                 {
                     $('#btnInsert').show();
+
+                    $('#btnGennerateScoringRange').show();
+                    $('#btnValidateModel').show();
+                    $('#btnCheckRating').show();
                 }
                 else
                 {
                     $('#btnInsert').hide();
+                    $('#btnGennerateScoringRange').show();
+                    $('#btnValidateModel').show();
+                    $('#btnCheckRating').show();
+                    if($scope.modelinfodetail.status=="publish")
+                    {
+                        $('#btnGennerateScoringRange').hide();
+                        $('#btnValidateModel').hide();
+                        $('#btnCheckRating').hide();
+                    }
                 }
             }
         }
@@ -112,7 +140,9 @@ function backmodelChanged($scope,$http,modelid)
                 if(typeof data["ERROR"]=='undefined')
                 {
                     $scope.modelforrating = data["SUCCESS"][0];
-                    $scope.ratings = data["SUCCESS"][0]["codein"];
+                    $scope.ratings = data["SUCCESS"][0]["codein"].sort(function(a, b){
+                        return a.scorefrom-b.scorefrom;
+                    });
                 }
                 else
                 {
