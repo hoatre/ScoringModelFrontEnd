@@ -4,8 +4,7 @@
 
 app.controller('factorController', function ($scope, $http) {
     //alert(url_factorlistangular);
-    factorlistangular($scope,$http,url_factorlistangular);
-
+    factorlistangular($scope,$http,url_factorlistangular_scala);
 
     factordelete($scope,$http,url_factordelete);
 }).controller('factortreeController', function ($scope, $http) {
